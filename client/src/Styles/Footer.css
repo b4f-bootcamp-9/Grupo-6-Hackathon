@@ -52,7 +52,7 @@
 }
 
 .social-icons a {
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     transition: color 0.3s ease;
 }

@@ -26,14 +26,14 @@ export function Footer() {
                     <p>Email: geral@distritovivo.pt</p>
                     <p>Telefone: (+351) 987 654 321</p>
                 </div>
-                <div className="footer-section">
+                {/* <div className="footer-section">
                     <h4>Siga-nos</h4>
                     <div className="social-icons">
                         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a> 
                         <a href="https://bsky.app" target="_blank" rel="noopener noreferrer">BlueSky</a>
                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
                     </div>
-                </div>
+                </div> */}
             </div>
             <div className="footer-bottom">
                 <p>&copy; 2025 Your Company. All rights reserved.</p>

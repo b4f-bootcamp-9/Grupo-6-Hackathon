@@ -95,6 +95,7 @@ export function Eventos() {
                             <h2 className="evento-titulo">{evento.titulo}</h2>
                             <p className="evento-descricao">{evento.descricao}</p>
                             <p className="evento-data">{evento.data}</p>
+                            <button className="evento-detalhes">Detalhes</button>
                         </div>
                     </div>
                 ))}

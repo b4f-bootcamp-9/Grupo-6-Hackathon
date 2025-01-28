@@ -50,6 +50,9 @@
     overflow: hidden;
     width: calc(33.33% - 20px); /* Três cards por linha */
     text-align: left; /* Alinhamento à esquerda para o texto */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .evento-imagem {
@@ -76,6 +79,23 @@
 
 .evento-data {
     font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.evento-detalhes {
+    align-self: flex-end; /* Alinhar à direita */
+    background-color: #F1C232; /* Cor amarela */
+    color: #006F8E; /* Cor do texto */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.evento-detalhes:hover {
+    background-color: #d45d32; /* Cor vermelha ao passar o mouse */
+    color: white; /* Cor do texto ao passar o mouse */
 }
 
 /* Responsividade */
