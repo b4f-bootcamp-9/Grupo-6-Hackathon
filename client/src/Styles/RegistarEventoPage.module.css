@@ -1,0 +1,124 @@
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #E1E1E1;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.titulo {
+  text-align: center;
+  color: #006F8E;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.secao {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.secao h2 {
+  color: #006F8E;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #D45D32;
+  padding-bottom: 0.5rem;
+}
+
+.grupoForm {
+  margin-bottom: 1.5rem;
+}
+
+.grupoForm label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #4a5568;
+  font-weight: 600;
+}
+
+.grupoForm input,
+.grupoForm textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #0000004b;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.grupoForm input:focus,
+.grupoForm textarea:focus {
+  outline: none;
+  border-color: #D45D32;
+  box-shadow: 0 0 0 3px rgba(212, 93, 50, 0.2);
+}
+
+.grupoForm textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.grupoCheck label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4a5568;
+  cursor: pointer;
+}
+
+.grupoCheck input {
+  width: 20px;
+  height: 20px;
+  accent-color: #7A8A3D;
+}
+
+.botao {
+  background-color: #7A8A3D;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.botao:hover {
+  background-color: #F1C232;
+}
+
+input[type="file"] {
+  padding: 0.5rem;
+  border: 2px dashed #7A8A3D;
+  background-color: #f8f9fa;
+}
+
+/* Efeitos de hover */
+.grupoForm label:hover,
+.grupoCheck label:hover {
+  color: #D45D32;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  
+  .titulo {
+    font-size: 2rem;
+  }
+}
