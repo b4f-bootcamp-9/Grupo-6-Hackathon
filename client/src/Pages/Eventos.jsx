@@ -35,6 +35,27 @@ export function Eventos() {
             imagem: "/Images/panos.png",
             categoria: "Tradicional",
         },
+        {
+            titulo: "Congresso de Tecnologia",
+            descricao: "Explore as últimas inovações tecnológicas.",
+            data: "5 de Maio de 2023",
+            imagem: "/Images/tecnologia.png",
+            categoria: "Tecnologia",
+        },
+        {
+            titulo: "Caminhada na Natureza",
+            descricao: "Aproveite uma caminhada ao ar livre com guias especializados.",
+            data: "15 de Maio de 2023",
+            imagem: "/Images/arlivre.png",
+            categoria: "Ar Livre",
+        },
+        {
+            titulo: "Peça de Teatro",
+            descricao: "Assista a uma emocionante peça de teatro.",
+            data: "20 de Maio de 2023",
+            imagem: "/Images/teatro.png",
+            categoria: "Teatro",
+        },
     ];
 
     const handleCategoryChange = (categoria) => {

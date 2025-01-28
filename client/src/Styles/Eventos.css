@@ -48,7 +48,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    width: 300px;
+    width: calc(33.33% - 20px); /* Três cards por linha */
     text-align: left; /* Alinhamento à esquerda para o texto */
 }
 
@@ -79,6 +79,12 @@
 }
 
 /* Responsividade */
+@media (max-width: 900px) {
+    .evento-card {
+        width: calc(50% - 20px); /* Dois cards por linha em telas menores */
+    }
+}
+
 @media (max-width: 600px) {
     .eventos-page {
         flex-direction: column;
@@ -95,7 +101,7 @@
     }
 
     .evento-card {
-        width: 100%;
+        width: 100%; /* Um card por linha em telas pequenas */
     }
 
     .evento-imagem {
