@@ -68,7 +68,7 @@
 
 .evento-titulo {
     font-size: 1.5rem;
-    color: #F1C232; /* Cor amarela */
+    color: #f1c232; /* Cor amarela */
     margin-bottom: 10px;
 }
 
@@ -84,8 +84,8 @@
 
 .evento-detalhes {
     align-self: flex-end; /* Alinhar à direita */
-    background-color: #F1C232; /* Cor amarela */
-    color: #006F8E; /* Cor do texto */
+    background-color: #d45d32; /* Cor amarela */
+    color: #ffffff; /* Cor do texto */
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
@@ -94,7 +94,7 @@
 }
 
 .evento-detalhes:hover {
-    background-color: #d45d32; /* Cor vermelha ao passar o mouse */
+    background-color: #f1c232; /* Cor vermelha ao passar o mouse */
     color: white; /* Cor do texto ao passar o mouse */
 }
 

@@ -1,0 +1,62 @@
+/* Página de Login */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e1e1e1; /* Cor de fundo cinzenta clara */
+}
+
+.login-container {
+    background-color: #838383; /* Fundo do contêiner de login */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #006f8e; /* Luz azul ao redor */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+}
+
+.login-logo img {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.login-form label {
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #006f8e; /* Contorno azul */
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 111, 142, 0.5); /* Luz azul ao redor dos campos */
+    box-sizing: border-box; /* Inclui padding na largura total */
+}
+
+.login-form button {
+    background-color: #006f8e; /* Azul */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 5px rgba(0, 111, 142, 0.5); /* Luz azul ao redor do botão */
+}
+
+.login-form button:hover {
+    background-color: #d45d32; /* Vermelho */
+    box-shadow: 0 0 10px rgba(212, 93, 50, 0.5); /* Luz vermelha ao passar o mouse */
+}
