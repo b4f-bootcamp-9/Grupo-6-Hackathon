@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../Styles/RegistoDeEventoPage.css";
 
 export function ResgistoDeEvento() {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [comment, setComment] = useState('');
   const [confirmationPopup, setConfirmationPopup] = useState(false);
-
   const eventos = [
     {
       id: 2,
@@ -40,22 +39,6 @@ export function ResgistoDeEvento() {
       contacto: "999999999"
     }
   ];
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      const modal = document.querySelector(".modalContent");
-      if (modal && !modal.contains(event.target)) {
-        setSelectedEvent(null);
-        setConfirmationPopup(false);
-        setComment('');
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   const handleEventClick = (event) => {
     setSelectedEvent(event);
