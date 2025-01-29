@@ -8,6 +8,7 @@
     bottom: 0; /* Fixar ao fundo */
     width: 100%; /* Largura total */
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar destaque */
+    z-index: -1;
 }
 
 .footer-content {
