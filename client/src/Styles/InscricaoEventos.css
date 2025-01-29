@@ -1,0 +1,92 @@
+/* Página de Inscrição para Eventos */
+.inscricao-evento-page {
+    padding: 80px 20px 60px; /* Espaçamento superior e inferior */
+    background-color: #E1E1E1; /* Cor de fundo cinzenta clara */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inscricao-evento-title {
+    font-size: 2.5rem;
+    color: #006F8E; /* Azul */
+    margin-bottom: 20px;
+}
+
+.inscricao-evento-form {
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #006F8E; /* Contorno azul */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 111, 142, 0.5); /* Luz azul ao redor */
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.inscricao-evento-form label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.inscricao-evento-form input,
+.inscricao-evento-form select,
+.inscricao-evento-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #006F8E; /* Contorno azul */
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 111, 142, 0.5); /* Luz azul ao redor dos campos */
+    box-sizing: border-box; /* Inclui padding na largura total */
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.checkbox-container input {
+    width: auto;
+    margin-right: 10px;
+}
+
+.inscricao-evento-form button {
+    background-color: #006F8E; /* Azul */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 5px rgba(0, 111, 142, 0.5); /* Luz azul ao redor do botão */
+}
+
+.inscricao-evento-form button:hover {
+    background-color: #d45d32; /* Vermelho */
+    box-shadow: 0 0 10px rgba(212, 93, 50, 0.5); /* Luz vermelha ao passar o mouse */
+}
+
+/* Pop-up */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+}

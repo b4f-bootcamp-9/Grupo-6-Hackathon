@@ -1,0 +1,124 @@
+/* Página de Detalhes do Evento */
+.detalhes-evento-page {
+    padding: 80px 20px 60px; /* Espaçamento superior e inferior */
+    background-color: #E1E1E1; /* Cor de fundo cinzenta clara */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Cabeçalho com seta e título */
+.detalhes-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.back-arrow {
+    cursor: pointer;
+    margin-right: 25px; /* Aumentei o espaçamento entre a seta e o título */
+}
+
+.back-arrow-icon {
+    width: 32px;
+    height: 32px;
+    fill: #006F8E; /* Azul */
+    transition: transform 0.2s ease;
+}
+
+.back-arrow-icon:hover {
+    transform: scale(1.1);
+}
+
+.detalhes-evento-title {
+    font-size: 2.5rem;
+    color: #006F8E; /* Azul */
+}
+
+.detalhes-evento-data {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilos do Card do Evento */
+.detalhes-evento-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 800px;
+    overflow: hidden; /* Garante que a parte azul se grude ao fundo */
+}
+
+.detalhes-evento-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detalhes-evento-imagem-container {
+    width: 100%;
+    max-width: 600px;
+    height: 200px; /* Ajuste a altura conforme necessário */
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.detalhes-evento-imagem {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Corta a imagem para caber no contêiner */
+}
+
+.detalhes-evento-descricao {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Parte azul da informação do evento */
+.detalhes-evento-info {
+    background-color: #006F8E; /* Azul */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box; /* Garante que o padding não exceda a largura do contêiner */
+}
+
+.detalhes-evento-info p {
+    font-size: 1rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.detalhes-evento-info a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.detalhes-evento-info a:hover {
+    color: #F1C232; /* Amarelo */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .detalhes-evento-content {
+        padding: 15px;
+    }
+
+    .detalhes-evento-imagem-container {
+        height: 150px; /* Ajuste a altura conforme necessário para telas menores */
+    }
+
+    .detalhes-evento-imagem {
+        object-position: center; /* Centraliza a imagem dentro do contêiner */
+    }
+
+    .detalhes-evento-info {
+        padding: 15px;
+    }
+}
