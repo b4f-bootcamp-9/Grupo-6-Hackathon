@@ -19,6 +19,7 @@ export function Footer() {
                         <li><a href="/">Home</a></li>
                         <li><a href="/eventos">Eventos</a></li>
                         <li><a href="/contactos">Contactos</a></li>
+                        <li><a href="/inscrever">Inscrever um evento</a></li>
                     </ul>
                 </div>
                 <div className="footer-section">
