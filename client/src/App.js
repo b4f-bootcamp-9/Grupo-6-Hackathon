@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { RegistarEventoPage } from "./Pages/RegistarEventoPage";
-
+import { ResgistoDeEvento } from "./Pages/ResgistoDeEventoPage";
+import {RegistarEventoPage} from "./Pages/RegistarEventoPage";
 
 function App() {
   return (
@@ -9,7 +9,8 @@ function App() {
     
 
     <Routes>
-      <Route path="/" element={<RegistarEventoPage />} />
+      <Route path="/" element={<ResgistoDeEvento />} />
+      <Route path="/RegistarEventoPage" element={<RegistarEventoPage />} />
 
     </Routes>
   </Router>
