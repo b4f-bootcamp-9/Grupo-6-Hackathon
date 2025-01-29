@@ -1,6 +1,11 @@
+
 import React, { useEffect, useState } from "react";
+
+import { useNavigate } from "react-router-dom";
+
 import "../Styles/Eventos.css";
 import { Card } from "../components/card";
+
 
 function createQuery(queryObject = {}) {
   let queryString = Object.keys(queryObject)
@@ -28,10 +33,12 @@ export function Eventos() {
   useEffect(() => {
     console.log(query);
 
+
     const requestOptions = {
       method: "GET",
       redirect: "follow",
     };
+
     const fetchData = async () => {
       // http://localhost:3001/api/eventos?c=oeiras&p=gratis&a=sim&t=tecnologia
       fetch(`http://localhost:3001/api/eventos${query}`, requestOptions)
@@ -51,6 +58,7 @@ export function Eventos() {
 
   const [filtro, setFiltro] = useState({});
 
+
   const categorias = [
     "Tecnologia",
     "Gastronomia",
@@ -60,35 +68,13 @@ export function Eventos() {
     "Teatro",
   ];
 
-  // const eventos = [
-  //   {
-  //     nomeEvento: "Festival de Música",
-  //     descricao: "Um incrível festival de música com bandas ao vivo.",
-  //     data: "25 de Abril de 2023",
-  //     imagem: "/Images/concerto.png",
-  //     tipo: "Música",
-  //   },
-  //   {
-  //     titulo: "Feira Gastronômica",
-  //     descricao: "Delicie-se com a melhor comida da região.",
-  //     data: "30 de Abril de 2023",
-  //     imagem: "/Images/gastronomia.png",
-  //     categoria: "Gastronomia",
-  //   },
-  //   {
-  //     titulo: "Exposição de Arte",
-  //     descricao: "Veja obras de arte de artistas locais.",
-  //     data: "10 de Maio de 2023",
-  //     imagem: "/Images/panos.png",
-  //     categoria: "Tradicional",
-  //   }
 
-  // ];
 
   const [filtroCategoria, setFiltroCategoria] = useState([]);
 
   console.log("Fetch Result");
   console.log(fetchResult);
+
 
   const handleCategoryChange = (categoria) => {
     setFiltroCategoria(
@@ -143,15 +129,13 @@ export function Eventos() {
     setQuery(createQuery(filtro));
   }, [filtro]);
 
-  // const filteredEventos = eventos.filter(
-  //   (evento) =>
-  //     selectedCategories.length === 0 ||
-  //     selectedCategories.includes(evento.categoria)
-  // );
-
   useEffect(() => {
     //console.log(filtroCategoria);
   }, [filtroCategoria]);
+
+  const handleDetalhesClick = (id) => {
+    navigate(`/eventos/${id}`);
+  };
 
   return (
     <div className="eventos-page">
@@ -206,16 +190,15 @@ export function Eventos() {
           id="acessivel"
           name="a"
           value="1"
+
           onChange={(e) => handleAcessibilidade()}
         />
         <label htmlFor="acessivel">Acessível</label>
-        {/* <button type="Button" onClick={() => handleSearch()}>
-          A
-        </button> */}
       </div>
       <div className="eventos-list">
         {fetchResult && <Card data={fetchResult} />}
-        {/* {!fetchResult && (<Loading/>)} */}
+       
+
       </div>
     </div>
   );
