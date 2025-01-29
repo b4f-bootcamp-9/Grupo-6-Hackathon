@@ -44,7 +44,7 @@
 }
 
 .evento-card {
-    background-color: #006F8E; /* Cor de fundo azul */
+    background-color: #E1E1E1; /* Cor de fundo azul */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
@@ -63,12 +63,12 @@
 
 .evento-info {
     padding: 15px;
-    color: #FFFFFF; /* Cor do texto */
+    color: #494949; /* Cor do texto */
 }
 
 .evento-titulo {
     font-size: 1.5rem;
-    color: #f1c232; /* Cor amarela */
+    color: #000000; /* Cor amarela */
     margin-bottom: 10px;
 }
 
@@ -84,7 +84,7 @@
 
 .evento-detalhes {
     align-self: flex-end; /* Alinhar à direita */
-    background-color: #d45d32; /* Cor amarela */
+    background-color: #F1c232; /* Cor amarela */
     color: #ffffff; /* Cor do texto */
     border: none;
     padding: 10px 15px;
@@ -94,7 +94,7 @@
 }
 
 .evento-detalhes:hover {
-    background-color: #f1c232; /* Cor vermelha ao passar o mouse */
+    background-color: #006F8E; /* Cor vermelha ao passar o mouse */
     color: white; /* Cor do texto ao passar o mouse */
 }
 

@@ -42,7 +42,7 @@ export function LandingPage() {
   ];
 
   return (
-    <div className="landing-page">
+    <div className="landing-pages">
       <h1 className="carousel-title">Distrito Vivo</h1>
       <div className="carousel-slogan">Onde a arte encontra a vida.</div>
       <div className="carousel-container">
@@ -68,7 +68,7 @@ export function LandingPage() {
           ))}
         </div>
       </div>
-      <div className="cards-container">
+      <div className="cards-containers">
         {cards.map((card, index) => (
           <div className="card" key={index}>
             <img src={card.image} alt={`Card ${index + 1}`} />

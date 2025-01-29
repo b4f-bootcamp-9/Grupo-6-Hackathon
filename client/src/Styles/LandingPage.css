@@ -1,5 +1,5 @@
 /* Landing Page */
-.landing-page {
+.landing-pages {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -82,7 +82,7 @@
 }
 
 /* Cards Container */
-.cards-container {
+.cards-containers {
     display: flex;
     justify-content: center;
     gap: 20px;

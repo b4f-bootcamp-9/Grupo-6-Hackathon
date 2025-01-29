@@ -101,6 +101,9 @@ export function DetalhesEvento() {
             </div>
             <p className="detalhes-evento-data">{evento.data}</p>
             <div className="detalhes-evento-card">
+                <div className="detalhes-background" style={{ background: `url(${evento.imagem})` }}>
+
+                </div>
                 <div className="detalhes-evento-content">
                     <div className="detalhes-evento-imagem-container">
                         <img src={evento.imagem} alt={evento.titulo} className="detalhes-evento-imagem" />
