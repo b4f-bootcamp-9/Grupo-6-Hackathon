@@ -58,7 +58,9 @@ if (result.matchedCount){
 }
 
 async function CreateEvento(obj) {
-  const data = obj.body;
+  console.log(obj.body);
+  
+  const data = obj.body.formData;
   const camposObrigatorios = [
     { campo: "nomeEvento", message: "Por favor insira o nome do evento" },
     { campo: "descricao", message: "Por favor insira a descricao do evento" },
@@ -70,6 +72,8 @@ async function CreateEvento(obj) {
     { campo: "email", message: "Por favor insira o seu email" },
     { campo: "nomeResponsavel", message: "Por favor insira o seu nome" },
   ];
+
+  
 
   for (const item of camposObrigatorios) {
     if (!data[item.campo]) {

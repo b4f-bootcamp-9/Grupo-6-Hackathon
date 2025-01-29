@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/RegistoDeEventoPage.css";
 
-export function ResgistoDeEvento() {
+export function RegistoDeEventoPage() {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [comment, setComment] = useState('');
   const [confirmationPopup, setConfirmationPopup] = useState(false);
