@@ -3,8 +3,8 @@ import "../Styles/LandingPage.css";
 
 export function LandingPage() {
   const images = [
-    "/Images/ar-livre.png",
-    "/Images/concerto.png",
+    "/Images/arlivre.png",
+    "/Images/tecnologia.png",
     "/Images/teatro.png",
     "/Images/gastronomia.png",
   ];
@@ -32,8 +32,8 @@ export function LandingPage() {
       description: "Festival do Leitão de Negrais",
     },
     {
-      image: "/Images/concerto.png",
-      description: "Sintra Con-Cê",
+      image: "/Images/tecnologia.png",
+      description: "Lisboa Games Week",
     },
     {
       image: "/Images/teatro.png",
