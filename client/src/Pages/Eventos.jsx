@@ -1,23 +1,25 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../Styles/Eventos.css";
 
 export function Eventos() {
-
-   const handleSearch = async () =>{
-    
-
+  const handleSearch = async () => {
     const requestOptions = {
       method: "GET",
-      redirect: "follow"
+      redirect: "follow",
     };
-    
-    fetch("http://localhost:3001/api/eventos?c=oeiras&p=gratis&a=sim&t=tecnologia", requestOptions)
+
+    fetch(
+      "http://localhost:3001/api/eventos?c=oeiras&p=gratis&a=sim&t=tecnologia",
+      requestOptions
+    )
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.error(error));
-   }
+  };
 
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const navigate = useNavigate();
 
   const categorias = [
     "Tecnologia",
@@ -30,45 +32,50 @@ export function Eventos() {
 
   const eventos = [
     {
+      id: 1,
       titulo: "Festival de Música",
       descricao: "Um incrível festival de música com bandas ao vivo.",
-      data: "25 de Abril de 2023",
+      data: "25 de Abril de 2025",
       imagem: "/Images/concerto.png",
       categoria: "Música",
     },
     {
+      id: 2,
       titulo: "Feira Gastronômica",
       descricao: "Delicie-se com a melhor comida da região.",
-      data: "30 de Abril de 2023",
+      data: "30 de Abril de 2025",
       imagem: "/Images/gastronomia.png",
       categoria: "Gastronomia",
     },
     {
+      id: 3,
       titulo: "Exposição de Arte",
       descricao: "Veja obras de arte de artistas locais.",
-      data: "10 de Maio de 2023",
-      imagem: "/Images/panos.png",
+      data: "10 de Maio de 2025",
+      imagem: "/Images/arte.png",
       categoria: "Tradicional",
     },
     {
+      id: 4,
       titulo: "Congresso de Tecnologia",
       descricao: "Explore as últimas inovações tecnológicas.",
-      data: "5 de Maio de 2023",
+      data: "5 de Maio de 2025",
       imagem: "/Images/tecnologia.png",
       categoria: "Tecnologia",
     },
     {
+      id: 5,
       titulo: "Caminhada na Natureza",
-      descricao:
-        "Aproveite uma caminhada ao ar livre com guias especializados.",
-      data: "15 de Maio de 2023",
+      descricao: "Aproveite uma caminhada ao ar livre com guias especializados.",
+      data: "15 de Maio de 2025",
       imagem: "/Images/arlivre.png",
       categoria: "Ar Livre",
     },
     {
+      id: 6,
       titulo: "Peça de Teatro",
       descricao: "Assista a uma emocionante peça de teatro.",
-      data: "20 de Maio de 2023",
+      data: "20 de Maio de 2025",
       imagem: "/Images/teatro.png",
       categoria: "Teatro",
     },
@@ -87,6 +94,10 @@ export function Eventos() {
       selectedCategories.length === 0 ||
       selectedCategories.includes(evento.categoria)
   );
+
+  const handleDetalhesClick = (id) => {
+    navigate(`/eventos/${id}`);
+  };
 
   return (
     <div className="eventos-page">
@@ -122,27 +133,27 @@ export function Eventos() {
             <label htmlFor={categoria}>{categoria}</label>
           </div>
         ))}
-         <input
-              type="checkbox"
-              id="gratis"
-              name="p"
-              value="1"
-              onChange=""
-            />
-            <label htmlFor="gratis">Grátis</label>
-            <input
-              type="checkbox"
-              id="acessivel"
-              name="a"
-              value="1"
-              onChange=""
-            />
-            <label htmlFor="acessivel">Acessível</label>
-            <button type="Button" onClick={()=>handleSearch()}>A</button>
+        <input
+          type="checkbox"
+          id="gratis"
+          name="p"
+          value="1"
+          onChange=""
+        />
+        <label htmlFor="gratis">Grátis</label>
+        <input
+          type="checkbox"
+          id="acessivel"
+          name="a"
+          value="1"
+          onChange=""
+        />
+        <label htmlFor="acessivel">Acessível</label>
+        <button type="Button" onClick={() => handleSearch()}>A</button>
       </div>
       <div className="eventos-list">
-        {filteredEventos.map((evento, index) => (
-          <div className="evento-card" key={index}>
+        {filteredEventos.map((evento) => (
+          <div className="evento-card" key={evento.id}>
             <img
               src={evento.imagem}
               alt={evento.titulo}
@@ -152,6 +163,7 @@ export function Eventos() {
               <h2 className="evento-titulo">{evento.titulo}</h2>
               <p className="evento-descricao">{evento.descricao}</p>
               <p className="evento-data">{evento.data}</p>
+              <button className="evento-detalhes" onClick={() => handleDetalhesClick(evento.id)}>Detalhes</button>
             </div>
           </div>
         ))}

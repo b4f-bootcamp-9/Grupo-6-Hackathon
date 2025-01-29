@@ -115,16 +115,4 @@
         width: 100%;
         margin-bottom: 20px;
     }
-
-    .eventos-list {
-        width: 100%;
-    }
-
-    .evento-card {
-        width: 100%; /* Um card por linha em telas pequenas */
-    }
-
-    .evento-imagem {
-        height: 150px;
-    }
 }
