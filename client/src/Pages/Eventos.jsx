@@ -40,12 +40,17 @@ export function Eventos() {
     };
 
     const fetchData = async () => {
+
+      console.log("entrou no fetch");
+   
+      
       // http://localhost:3001/api/eventos?c=oeiras&p=gratis&a=sim&t=tecnologia
       fetch(`http://localhost:3001/api/eventos${query}`, requestOptions)
+
         .then((response) => response.json())
         .then((result) => {
           setFetchResult(result);
-         // console.log(result);
+          console.log(result);
         })
         .catch((error) => console.error(error));
     };
@@ -133,9 +138,9 @@ export function Eventos() {
     //console.log(filtroCategoria);
   }, [filtroCategoria]);
 
-  const handleDetalhesClick = (id) => {
-    navigate(`/eventos/${id}`);
-  };
+  // const handleDetalhesClick = (id) => {
+  //   navigate(`/eventos/${id}`);
+  // };
 
   return (
     <div className="eventos-page">

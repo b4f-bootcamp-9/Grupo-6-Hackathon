@@ -6,22 +6,25 @@ const {
 
 async function ReadEventos(obj) {
     
-    console.log(obj);
+  
     
     const raw = obj.query;
-    
 
-   const data = {
+
+   const data = { 
         concelho:raw.c || "",
         preco:raw.p || "",
         acessibilidade:raw.a || "",
-        tipo:raw.t || ""
+        tipo:raw.t || "",
+        imagem: raw.imagem
+
     }
     if(data.concelho === "Todos"){
       data.concelho=""
     }
   
     
+
 
   result = FindEventos(data);
   return result

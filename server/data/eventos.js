@@ -4,7 +4,7 @@ const col = "eventos";
 const db = "distritoVivoDB";
 
 async function FindEventos(obj) {
-  console.log(obj.tipo);
+
   
   const query = {
     estado: { $in: ["confirmado", "iniciado"] },
@@ -21,8 +21,9 @@ async function FindEventos(obj) {
   if (obj.acessibilidade !== "") query.acessibilidade = obj.acessibilidade;
 
   
-
   const collection = await getMongoCollection(db, col);
+
+
   const result = await collection
     .find(query, {
       projection: { nomeResponsavel: 0, email: 0, contacto: 0, estado: 0 },

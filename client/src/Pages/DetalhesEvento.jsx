@@ -61,7 +61,7 @@ export function DetalhesEvento() {
             descricao: "Passeios de charrete tradicional em Sintra oferecem uma experiência nostálgica pelas ruas históricas, passando por palácios e paisagens encantadoras.",
             data: "15 de Maio de 2025",
             imagem: "/Images/tradicional.png",
-            categoria: "Ar Livre",
+            categoria: "Tradicional",
             preco: "8.5€",
             morada: "Rua do Moinho, n.º 13-A, Aruil 2715-421, Almargem do Bispo",
             acessibilidade: "Não",

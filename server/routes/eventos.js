@@ -17,6 +17,9 @@ router.use((err, req, res, next)=>{
 router
   .route("/")
   .get(async (req, res) => {
+
+    console.log("aaaaaaa");
+    
     const result = await ReadEventos(req);
 
     if (result) {
