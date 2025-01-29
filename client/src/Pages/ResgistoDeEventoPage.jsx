@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import styles from "../Styles/ResgistoDeEventoPage.module.css";
+import React, { useState, useEffect } from "react";
+import "../Styles/RegistoDeEventoPage.css";
 
 export function ResgistoDeEvento() {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [comment, setComment] = useState('');
   const [confirmationPopup, setConfirmationPopup] = useState(false);
+
   const eventos = [
     {
       id: 2,
@@ -16,7 +17,11 @@ export function ResgistoDeEvento() {
       preco: "5€",
       morada: "Praça da Gastronomia, 456, Lisboa",
       acessibilidade: "Não",
-      website: "https://feiragastronomica.com/"
+      website: "https://feiragastronomica.com/",
+      hora: "12:00",
+      email: "geral@gmail.com",
+      nomeProprio: "Joaquim",
+      contacto: "999999999"
     },
     {
       id: 3,
@@ -28,81 +33,29 @@ export function ResgistoDeEvento() {
       preco: "Gratuito",
       morada: "Parque Tecnológico, 123, Lisboa",
       acessibilidade: "Sim",
-      website: "https://eventodetecnologia.com/"
-    },
-    {
-        id: 3,
-        titulo: "Evento de Tecnologia",
-        descricao: "Explore as últimas inovações tecnológicas.",
-        data: "12 de Maio de 2025",
-        imagem: "/Images/tecnologia.png",
-        categoria: "Tecnologia",
-        preco: "Gratuito",
-        morada: "Parque Tecnológico, 123, Lisboa",
-        acessibilidade: "Sim",
-        website: "https://eventodetecnologia.com/"
-      },
-      {
-        id: 3,
-        titulo: "Evento de Tecnologia",
-        descricao: "Explore as últimas inovações tecnológicas.",
-        data: "12 de Maio de 2025",
-        imagem: "/Images/tecnologia.png",
-        categoria: "Tecnologia",
-        preco: "Gratuito",
-        morada: "Parque Tecnológico, 123, Lisboa",
-        acessibilidade: "Sim",
-        website: "https://eventodetecnologia.com/"
-      },
-      {
-        id: 3,
-        titulo: "Evento de Tecnologia",
-        descricao: "Explore as últimas inovações tecnológicas.",
-        data: "12 de Maio de 2025",
-        imagem: "/Images/tecnologia.png",
-        categoria: "Tecnologia",
-        preco: "Gratuito",
-        morada: "Parque Tecnológico, 123, Lisboa",
-        acessibilidade: "Sim",
-        website: "https://eventodetecnologia.com/"
-      },
-      {
-        id: 3,
-        titulo: "Evento de Tecnologia",
-        descricao: "Explore as últimas inovações tecnológicas.",
-        data: "12 de Maio de 2025",
-        imagem: "/Images/tecnologia.png",
-        categoria: "Tecnologia",
-        preco: "Gratuito",
-        morada: "Parque Tecnológico, 123, Lisboa",
-        acessibilidade: "Sim",
-        website: "https://eventodetecnologia.com/"
-      },
-      {
-        id: 3,
-        titulo: "Evento de Tecnologia",
-        descricao: "Explore as últimas inovações tecnológicas.",
-        data: "12 de Maio de 2025",
-        imagem: "/Images/tecnologia.png",
-        categoria: "Tecnologia",
-        preco: "Gratuito",
-        morada: "Parque Tecnológico, 123, Lisboa",
-        acessibilidade: "Sim",
-        website: "https://eventodetecnologia.com/"
-      },
-      {
-        id: 3,
-        titulo: "Evento de Tecnologia",
-        descricao: "Explore as últimas inovações tecnológicas.",
-        data: "12 de Maio de 2025",
-        imagem: "/Images/tecnologia.png",
-        categoria: "Tecnologia",
-        preco: "Gratuito",
-        morada: "Parque Tecnológico, 123, Lisboa",
-        acessibilidade: "Sim",
-        website: "https://eventodetecnologia.com/"
-      },
+      website: "https://eventodetecnologia.com/",
+      hora: "14:00",
+      email: "geral@gmail.com",
+      nomeProprio: "Joaquim",
+      contacto: "999999999"
+    }
   ];
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const modal = document.querySelector(".modalContent");
+      if (modal && !modal.contains(event.target)) {
+        setSelectedEvent(null);
+        setConfirmationPopup(false);
+        setComment('');
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleEventClick = (event) => {
     setSelectedEvent(event);
@@ -124,52 +77,54 @@ export function ResgistoDeEvento() {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.titulo}>Confirmação dos Eventos Registrados</h1>
+    <div className="container">
+      <h1 className="titulo">Confirmação dos Eventos Registrados</h1>
       {eventos.map((evento) => (
-        <div key={evento.id} className={styles.card} onClick={() => handleEventClick(evento)}>
-          <div className={styles.eventInfo}>
-            <span className={styles.eventNome}>{evento.titulo}</span>
-            <span className={styles.eventDescricao}>{evento.descricao}</span>
+        <div key={evento.id} className="card" onClick={() => handleEventClick(evento)}>
+          <div className="eventInfo">
+            <span className="eventNome">{evento.titulo}</span>
+            <span className="eventDescricao">{evento.descricao}</span>
+            <span className="eventContacto"><strong>Contacto:</strong> {evento.contacto}</span>
+            <span className="eventEmail"><strong>Email:</strong> {evento.email}</span>
+            <span className="eventNomeProprio"><strong>Nome:</strong> {evento.nomeProprio}</span>
+            <span className="eventHora"><strong>Hora:</strong> {evento.hora}</span>
           </div>
-          <div className={styles.eventDetails}>
-            <span className={styles.eventConselho}>{evento.categoria}</span>
-            <span className={styles.eventData}>{evento.data}</span>
+          <div className="eventDetails">
+            <span className="eventConselho">{evento.categoria}</span>
+            <span className="eventData">{evento.data}</span>
           </div>
         </div>
       ))}
 
       {selectedEvent && (
-        <div className={styles.modal}>
-          <div className={styles.modalContent}>
+        <div className="modal">
+          <div className="modalContent">
             <h2>{selectedEvent.titulo}</h2>
-            <img src={selectedEvent.imagem} alt={selectedEvent.titulo} className={styles.eventImage} />
+            <img src={selectedEvent.imagem} alt={selectedEvent.titulo} className="eventImage" />
             <p>{selectedEvent.descricao}</p>
             <p><strong>Data:</strong> {selectedEvent.data}</p>
             <p><strong>Local:</strong> {selectedEvent.morada}</p>
             <p><strong>Preço:</strong> {selectedEvent.preco}</p>
             <p><strong>Acessibilidade:</strong> {selectedEvent.acessibilidade}</p>
+            <p><strong>Contacto:</strong> {selectedEvent.contacto}</p>
+            <p><strong>Email:</strong> {selectedEvent.email}</p>
+            <p><strong>Nome Proprio:</strong> {selectedEvent.nomeProprio}</p>
             <p><strong>Website:</strong> <a href={selectedEvent.website} target="_blank" rel="noopener noreferrer">{selectedEvent.website}</a></p>
-            <textarea 
-              className={styles.commentBox} 
-              placeholder="Adicione um comentário..." 
-              value={comment} 
-              onChange={(e) => setComment(e.target.value)}
-            ></textarea>
-            <div className={styles.buttonContainer}>
-              <button className={styles.acceptButton} onClick={handleAccept}>Aceitar</button>
-              <button className={styles.rejectButton} onClick={handleReject}>Recusar</button>
+            <p><strong>Hora:</strong> {selectedEvent.hora}</p>
+
+            <div className="buttonContainer">
+              <button className="acceptButton" onClick={handleAccept}>Aceitar</button>
+              <button className="rejectButton" onClick={handleReject}>Recusar</button>
             </div>
           </div>
         </div>
       )}
 
       {confirmationPopup && (
-        <div className={styles.modal}>
-          <div className={styles.modalContent}>
+        <div className="modal">
+          <div className="modalContent">
             <h2>Evento {confirmationPopup.action === "accepted" ? "Aceito" : "Recusado"}</h2>
-            <p>Comentário: {confirmationPopup.comment}</p>
-            <button onClick={handleCloseConfirmation} className={styles.closeButton}>Fechar</button>
+            <button onClick={handleCloseConfirmation} className="closeButton">Fechar</button>
           </div>
         </div>
       )}
