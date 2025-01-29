@@ -6,6 +6,8 @@ const {
 
 async function ReadEventos(obj) {
     
+    console.log(obj);
+    
     const raw = obj.query;
     
 
@@ -15,8 +17,10 @@ async function ReadEventos(obj) {
         acessibilidade:raw.a || "",
         tipo:raw.t || ""
     }
-
-    console.log(data);
+    if(data.concelho === "Todos"){
+      data.concelho=""
+    }
+  
     
 
   result = FindEventos(data);

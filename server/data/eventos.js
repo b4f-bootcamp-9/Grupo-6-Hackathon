@@ -4,17 +4,30 @@ const col = "eventos";
 const db = "distritoVivoDB";
 
 async function FindEventos(obj) {
-    const query = {
-        estado: { $in: ["confirmado", "iniciado"] }
-      };
-      if (obj.concelho) query.concelho = obj.concelho;
-      if (obj.tipo) query.tipo = obj.tipo;
-      if (obj.preco) query.preco = obj.preco;
-      if (obj.acessibilidade) query.acessibilidade = obj.acessibilidade;
+  console.log(obj.tipo);
+  
+  const query = {
+    estado: { $in: ["confirmado", "iniciado"] },
+  };
+  if (obj.concelho !== "") query.concelho = obj.concelho;
+  if (obj.tipo !== "") {
+    if (Array.isArray(obj.tipo)) {
+      query.tipo = { $in: obj.tipo };
+    } else {
+      query.tipo = obj.tipo;
+    }
+  }
+  if (obj.preco !== "") query.preco = obj.preco;
+  if (obj.acessibilidade !== "") query.acessibilidade = obj.acessibilidade;
 
+  
 
   const collection = await getMongoCollection(db, col);
-  const result = await collection.find(query,{projection:{nomeResponsavel:0, email:0, contacto:0, estado:0}}).toArray();
+  const result = await collection
+    .find(query, {
+      projection: { nomeResponsavel: 0, email: 0, contacto: 0, estado: 0 },
+    })
+    .toArray();
   return result;
 }
 
@@ -25,7 +38,8 @@ async function UpdateOneEvento(obj) {
   const collection = await getMongoCollection(db, col);
   const result = await collection.updateOne(
     { _id: new ObjectId(obj._id) },
-    { $set: {estado : obj.estado} })
+    { $set: { estado: obj.estado } }
+  );
   return result;
 }
 
