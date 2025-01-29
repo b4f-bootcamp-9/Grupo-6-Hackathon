@@ -1,25 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Styles/Eventos.css";
+import { Card } from "../components/card";
+
+function createQuery(queryObject = {}) {
+  let queryString = Object.keys(queryObject)
+    .filter(
+      (key) =>
+        queryObject[key] &&
+        !(Array.isArray(queryObject[key]) && !queryObject[key].length)
+    )
+    .map((key) => {
+      return Array.isArray(queryObject[key])
+        ? queryObject[key]
+            .map(
+              (item) => `${encodeURIComponent(key)}=${encodeURIComponent(item)}`
+            )
+            .join("&")
+        : `${encodeURIComponent(key)}=${encodeURIComponent(queryObject[key])}`;
+    })
+    .join("&");
+  return queryString ? `?${queryString}` : "";
+}
 
 export function Eventos() {
-
-   const handleSearch = async () =>{
-    
+  const [query, setQuery] = useState("");
+  const [fetchResult, setFetchResult] = useState([]);
+  useEffect(() => {
+    console.log(query);
 
     const requestOptions = {
       method: "GET",
-      redirect: "follow"
+      redirect: "follow",
     };
-    
-    fetch("http://localhost:3001/api/eventos?c=oeiras&p=gratis&a=sim&t=tecnologia", requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.error(error));
-   }
-
-
-
+    const fetchData = async () => {
+      // http://localhost:3001/api/eventos?c=oeiras&p=gratis&a=sim&t=tecnologia
+      fetch(`http://localhost:3001/api/eventos${query}`, requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          setFetchResult(result);
+         // console.log(result);
+        })
+        .catch((error) => console.error(error));
+    };
+    fetchData();
+  }, [query]);
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [concelho, setConcelho] = useState("");
+  const [preco, setPreco] = useState("");
+  const [acessivel, setAcessivel] = useState("");
+
+  const [filtro, setFiltro] = useState({});
 
   const categorias = [
     "Tecnologia",
@@ -30,71 +60,110 @@ export function Eventos() {
     "Teatro",
   ];
 
-  const eventos = [
-    {
-      titulo: "Festival de Música",
-      descricao: "Um incrível festival de música com bandas ao vivo.",
-      data: "25 de Abril de 2023",
-      imagem: "/Images/concerto.png",
-      categoria: "Música",
-    },
-    {
-      titulo: "Feira Gastronômica",
-      descricao: "Delicie-se com a melhor comida da região.",
-      data: "30 de Abril de 2023",
-      imagem: "/Images/gastronomia.png",
-      categoria: "Gastronomia",
-    },
-    {
-      titulo: "Exposição de Arte",
-      descricao: "Veja obras de arte de artistas locais.",
-      data: "10 de Maio de 2023",
-      imagem: "/Images/panos.png",
-      categoria: "Tradicional",
-    },
-    {
-      titulo: "Congresso de Tecnologia",
-      descricao: "Explore as últimas inovações tecnológicas.",
-      data: "5 de Maio de 2023",
-      imagem: "/Images/tecnologia.png",
-      categoria: "Tecnologia",
-    },
-    {
-      titulo: "Caminhada na Natureza",
-      descricao:
-        "Aproveite uma caminhada ao ar livre com guias especializados.",
-      data: "15 de Maio de 2023",
-      imagem: "/Images/arlivre.png",
-      categoria: "Ar Livre",
-    },
-    {
-      titulo: "Peça de Teatro",
-      descricao: "Assista a uma emocionante peça de teatro.",
-      data: "20 de Maio de 2023",
-      imagem: "/Images/teatro.png",
-      categoria: "Teatro",
-    },
-  ];
+  // const eventos = [
+  //   {
+  //     nomeEvento: "Festival de Música",
+  //     descricao: "Um incrível festival de música com bandas ao vivo.",
+  //     data: "25 de Abril de 2023",
+  //     imagem: "/Images/concerto.png",
+  //     tipo: "Música",
+  //   },
+  //   {
+  //     titulo: "Feira Gastronômica",
+  //     descricao: "Delicie-se com a melhor comida da região.",
+  //     data: "30 de Abril de 2023",
+  //     imagem: "/Images/gastronomia.png",
+  //     categoria: "Gastronomia",
+  //   },
+  //   {
+  //     titulo: "Exposição de Arte",
+  //     descricao: "Veja obras de arte de artistas locais.",
+  //     data: "10 de Maio de 2023",
+  //     imagem: "/Images/panos.png",
+  //     categoria: "Tradicional",
+  //   }
+
+  // ];
+
+  const [filtroCategoria, setFiltroCategoria] = useState([]);
+
+  console.log("Fetch Result");
+  console.log(fetchResult);
 
   const handleCategoryChange = (categoria) => {
-    setSelectedCategories((prevSelectedCategories) =>
-      prevSelectedCategories.includes(categoria)
-        ? prevSelectedCategories.filter((cat) => cat !== categoria)
-        : [...prevSelectedCategories, categoria]
+    setFiltroCategoria(
+      filtroCategoria.includes(categoria)
+        ? filtroCategoria.filter((cat) => cat !== categoria)
+        : [...filtroCategoria, categoria]
     );
   };
 
-  const filteredEventos = eventos.filter(
-    (evento) =>
-      selectedCategories.length === 0 ||
-      selectedCategories.includes(evento.categoria)
-  );
+  const handleConcelhoChange = (concelho) => {
+    setConcelho(concelho);
+  };
+
+  useEffect(() => {
+    if (filtroCategoria) {
+      setFiltro((prevFiltro) => {
+        return { ...prevFiltro, t: filtroCategoria };
+      });
+    }
+    if (concelho) {
+      console.log("concelho");
+      
+      console.log(concelho);
+      
+      setFiltro((prevFiltro) => {
+        return { ...prevFiltro, c: concelho };
+      });
+    }
+  }, [filtroCategoria, concelho]);
+
+  const handlePreco = () => {
+    setFiltro((prevFiltro) => {
+      if (prevFiltro.p === 1) {
+        return { ...prevFiltro, p: 0 };
+      } else {
+        return { ...prevFiltro, p: 1 };
+      }
+    });
+  };
+
+  const handleAcessibilidade = () => {
+    setFiltro((prevFiltro) => {
+      if (prevFiltro.a === 1) {
+        return { ...prevFiltro, a: 0 };
+      } else {
+        return { ...prevFiltro, a: 1 };
+      }
+    });
+  };
+
+  useEffect(() => {
+    setQuery(createQuery(filtro));
+  }, [filtro]);
+
+  // const filteredEventos = eventos.filter(
+  //   (evento) =>
+  //     selectedCategories.length === 0 ||
+  //     selectedCategories.includes(evento.categoria)
+  // );
+
+  useEffect(() => {
+    //console.log(filtroCategoria);
+  }, [filtroCategoria]);
 
   return (
     <div className="eventos-page">
       <div className="filtro">
         <h2>Filtro:</h2>
-        <select name="c" id="ListaConcelhos">
+        <select
+          name="c"
+          id="ListaConcelhos"
+          value={concelho}
+          onChange={(e) => handleConcelhoChange(e.target.value)}
+        >
+          <option value="Todos">Todos</option>
           <option value="Lisboa">Lisboa</option>
           <option value="Amadora">Amadora</option>
           <option value="Oeiras">Oeiras</option>
@@ -124,39 +193,29 @@ export function Eventos() {
             <label htmlFor={categoria}>{categoria}</label>
           </div>
         ))}
-         <input
-              type="checkbox"
-              id="gratis"
-              name="p"
-              value="1"
-              onChange=""
-            />
-            <label htmlFor="gratis">Grátis</label>
-            <input
-              type="checkbox"
-              id="acessivel"
-              name="a"
-              value="1"
-              onChange=""
-            />
-            <label htmlFor="acessivel">Acessível</label>
-            <button type="Button" onClick={()=>handleSearch()}>A</button>
+        <input
+          type="checkbox"
+          id="gratis"
+          name="p"
+          value="1"
+          onChange={(e) => handlePreco()}
+        />
+        <label htmlFor="gratis">Grátis</label>
+        <input
+          type="checkbox"
+          id="acessivel"
+          name="a"
+          value="1"
+          onChange={(e) => handleAcessibilidade()}
+        />
+        <label htmlFor="acessivel">Acessível</label>
+        {/* <button type="Button" onClick={() => handleSearch()}>
+          A
+        </button> */}
       </div>
       <div className="eventos-list">
-        {filteredEventos.map((evento, index) => (
-          <div className="evento-card" key={index}>
-            <img
-              src={evento.imagem}
-              alt={evento.titulo}
-              className="evento-imagem"
-            />
-            <div className="evento-info">
-              <h2 className="evento-titulo">{evento.titulo}</h2>
-              <p className="evento-descricao">{evento.descricao}</p>
-              <p className="evento-data">{evento.data}</p>
-            </div>
-          </div>
-        ))}
+        {fetchResult && <Card data={fetchResult} />}
+        {/* {!fetchResult && (<Loading/>)} */}
       </div>
     </div>
   );
