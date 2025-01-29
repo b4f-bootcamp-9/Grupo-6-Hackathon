@@ -133,9 +133,9 @@ export function Eventos() {
     //console.log(filtroCategoria);
   }, [filtroCategoria]);
 
-  const handleDetalhesClick = (id) => {
-    navigate(`/eventos/${id}`);
-  };
+  // const handleDetalhesClick = (id) => {
+  //   navigate(`/eventos/${id}`);
+  // };
 
   return (
     <div className="eventos-page">
