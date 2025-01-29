@@ -22,7 +22,7 @@ router
     if (result) {
       res.status(200).json(result);
     } else {
-      res.status(404).json({ msg: "Aluno ou carta não encontrado." });
+      res.status(404).json({ erro: "Erro a mostrar o evento" });
     }
   })
   .post(async (req, res) => {
@@ -35,12 +35,11 @@ router
     }
   });
 
+
 router.patch("/:id", async (req, res) => {
    
         const result = await UpdateEvento(req);
    
-  
-
   if (!result.erro) {
     res.status(201).json({ ok: "Evento alterado com sucesso" });
   } else {
