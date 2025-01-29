@@ -37,7 +37,7 @@ export function Footer() {
                 </div> */}
             </div>
             <div className="footer-bottom">
-                <p>&copy; 2025 Your Company. All rights reserved.</p>
+                <p>&copy; 2025 Distrito Vivo. Todos os Direitos Reservados.</p>
             </div>
         </footer>
     );

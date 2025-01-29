@@ -3,20 +3,24 @@ const {
   ReadEventos,
   CreateEvento,
   UpdateEvento,
+  ReadEventoById,
+  ReadEventosGestao,
 } = require("../services/eventos");
 const router = express.Router();
 router.use(express.json());
 
-router.use((err, req, res, next)=>{
-    if(err){
-       return res.send({erro:"Pedido mal formatado."})        
-    }
-    next()
-})
+router.use((err, req, res, next) => {
+  if (err) {
+    return res.send({ erro: "Pedido mal formatado." });
+  }
+  next();
+});
 
 router
   .route("/")
   .get(async (req, res) => {
+    
+    
     const result = await ReadEventos(req);
 
     if (result) {
@@ -35,18 +39,36 @@ router
     }
   });
 
+router.get("/gestao", async (req, res) => {
+  const result = await ReadEventosGestao();
+  console.log(result);
 
-router.patch("/:id", async (req, res) => {
-   
-        const result = await UpdateEvento(req);
-   
-  if (!result.erro) {
-    res.status(201).json({ ok: "Evento alterado com sucesso" });
+  if (result) {
+    res.status(200).send(result);
   } else {
-    res.status(400).json({ erro: result.erro });
+    res.status(404).json({ erro: "Erro a mostrar o evento" });
   }
 });
 
-router.post("/new", async (req, res) => {});
+router
+  .route("/:id")
+  .patch(async (req, res) => {
+    const result = await UpdateEvento(req);
+
+    if (!result.erro) {
+      res.status(201).json({ ok: "Evento alterado com sucesso" });
+    } else {
+      res.status(400).json({ erro: result.erro });
+    }
+  })
+  .get(async (req, res) => {
+    const result = await ReadEventoById(req);
+
+    if (result) {
+      res.status(200).send(result);
+    } else {
+      res.status(404).json({ erro: "Erro a mostrar o evento" });
+    }
+  });
 
 module.exports = router;
