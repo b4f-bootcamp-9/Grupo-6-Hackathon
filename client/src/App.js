@@ -10,7 +10,7 @@ import { DetalhesEvento } from "./Pages/DetalhesEvento";
 import { InscricaoEvento } from "./Pages/InscricaoEventos";
 import { Login } from "./Pages/Login";
 
-import {ResgistoDeEvento} from "./Pages/RegistoDeEventoPage";
+import {RegistoDeEventoPage} from "./Pages/RegistoDeEventoPage";
 
 
 
@@ -26,7 +26,7 @@ function App() {
         <Route path="/contactos" element={<Contactos/>} />
         <Route path="/inscrever" element={<InscricaoEvento/>} />
         <Route path="/login" element={<Login/>} />
-        <Route path="/verificar" element={<ResgistoDeEvento />} />
+        <Route path="/verificar" element={<RegistoDeEventoPage />} />
       </Routes>
       <Footer />
     </Router>
