@@ -1,9 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "../Styles/DetalhesEvento.css";
 
 export function DetalhesEvento() {
     const { id } = useParams();
+    const navigate = useNavigate();
 
     const eventos = [
         {
@@ -35,7 +36,7 @@ export function DetalhesEvento() {
             titulo: "Visita ao Palácio de Pena",
             descricao: "O Palácio da Pena é um icónico palácio romântico em Sintra, com cores vibrantes e vistas deslumbrantes.",
             data: "10 de Maio de 2025",
-            imagem: "/Images/arte.png",
+            imagem: "/Images/arlivre.png",
             categoria: "Ar Livre",
             preco: "13€",
             morada: "Estrada da Pena, 2710-609 Sintra",
@@ -49,35 +50,35 @@ export function DetalhesEvento() {
             data: "5 de Maio de 2025",
             imagem: "/Images/tecnologia.png",
             categoria: "Tecnologia",
-            preco: "13€",
-            morada: "Estrada da Pena, 2710-609 Sintra",
+            preco: "20€",
+            morada: "R. do Bojador, 1998-010 Lisboa",
             acessibilidade: "Sim",
-            website: "https://www.parquesdesintra.pt/pt/parques-monumentos/parque-e-palacio-nacional-da-pena/",
-          },
-          {
+            website: "https://www.lisboagamesweek.pt",
+        },
+        {
             id: 5,
             titulo: "Passeios em Charrete Tradicional",
             descricao: "Passeios de charrete tradicional em Sintra oferecem uma experiência nostálgica pelas ruas históricas, passando por palácios e paisagens encantadoras.",
             data: "15 de Maio de 2025",
             imagem: "/Images/tradicional.png",
             categoria: "Ar Livre",
-            preco: "13€",
-            morada: "Estrada da Pena, 2710-609 Sintra",
+            preco: "8.5€",
+            morada: "Rua do Moinho, n.º 13-A, Aruil 2715-421, Almargem do Bispo",
             acessibilidade: "Não",
-            website: "https://www.parquesdesintra.pt/pt/parques-monumentos/parque-e-palacio-nacional-da-pena/",
-          },
-          {
+            website: "https://www.qtour.pt/index.php/pt/",
+        },
+        {
             id: 6,
             titulo: "Casa de Teatro de Sintra",
             descricao: "A Casa de Teatro de Sintra promove espetáculos e formações artísticas, valorizando o teatro local e a cultura portuguesa.",
             data: "20 de Maio de 2025",
             imagem: "/Images/teatro.png",
             categoria: "Teatro",
-            preco: "13€",
-            morada: "Estrada da Pena, 2710-609 Sintra",
-            acessibilidade: "Não",
-            website: "https://www.parquesdesintra.pt/pt/parques-monumentos/parque-e-palacio-nacional-da-pena/",
-          },
+            preco: "7.5€",
+            morada: "R. Veiga da Cunha 20, 2710-627 Sintra",
+            acessibilidade: "Sim",
+            website: "https://chaodeoliva.com",
+        },
         // ... outros eventos
     ];
 
@@ -89,13 +90,23 @@ export function DetalhesEvento() {
 
     return (
         <div className="detalhes-evento-page">
-            <h1 className="detalhes-evento-title">{evento.titulo}</h1>
-            <p className="detalhes-evento-data">{evento.data}</p>
-            <div className="detalhes-evento-content">
-                <div className="detalhes-evento-imagem-container">
-                    <img src={evento.imagem} alt={evento.titulo} className="detalhes-evento-imagem" />
+            <div className="detalhes-header">
+                <div className="back-arrow" onClick={() => navigate("/eventos")}>
+                    {/* Ícone de seta para a esquerda */}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#006F8E" className="back-arrow-icon" viewBox="0 0 16 16">
+                        <path d="M15 8a.5.5 0 0 1-.5.5H3.707l4.147 4.146a.5.5 0 0 1-.708.708l-5-5a.498.498 0 0 1 0-.707l5-5a.5.5 0 1 1 .708.708L3.707 7.5H14.5a.5.5 0 0 1 .5.5z"/>
+                    </svg>
                 </div>
-                <p className="detalhes-evento-descricao">{evento.descricao}</p>
+                <h1 className="detalhes-evento-title">{evento.titulo}</h1>
+            </div>
+            <p className="detalhes-evento-data">{evento.data}</p>
+            <div className="detalhes-evento-card">
+                <div className="detalhes-evento-content">
+                    <div className="detalhes-evento-imagem-container">
+                        <img src={evento.imagem} alt={evento.titulo} className="detalhes-evento-imagem" />
+                    </div>
+                    <p className="detalhes-evento-descricao">{evento.descricao}</p>
+                </div>
                 <div className="detalhes-evento-info">
                     <p><strong>Preço:</strong> {evento.preco}</p>
                     <p><strong>Morada:</strong> {evento.morada}</p>

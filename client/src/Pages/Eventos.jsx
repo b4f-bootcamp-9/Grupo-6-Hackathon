@@ -69,7 +69,7 @@ export function Eventos() {
       descricao: "Passeios de charrete tradicional em Sintra oferecem uma experiência nostálgica pelas ruas históricas, passando por palácios e paisagens encantadoras.",
       data: "15 de Maio de 2025",
       imagem: "/Images/tradicional.png",
-      categoria: "Ar Livre",
+      categoria: "Tradicional",
     },
     {
       id: 6,

@@ -7,10 +7,32 @@
     align-items: center;
 }
 
+/* Cabeçalho com seta e título */
+.detalhes-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.back-arrow {
+    cursor: pointer;
+    margin-right: 25px; /* Aumentei o espaçamento entre a seta e o título */
+}
+
+.back-arrow-icon {
+    width: 32px;
+    height: 32px;
+    fill: #006F8E; /* Azul */
+    transition: transform 0.2s ease;
+}
+
+.back-arrow-icon:hover {
+    transform: scale(1.1);
+}
+
 .detalhes-evento-title {
     font-size: 2.5rem;
     color: #006F8E; /* Azul */
-    margin-bottom: 10px;
 }
 
 .detalhes-evento-data {
@@ -19,13 +41,18 @@
     margin-bottom: 20px;
 }
 
-.detalhes-evento-content {
+/* Estilos do Card do Evento */
+.detalhes-evento-card {
     background-color: white;
-    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 800px;
+    overflow: hidden; /* Garante que a parte azul se grude ao fundo */
+}
+
+.detalhes-evento-content {
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,12 +80,12 @@
     text-align: center;
 }
 
+/* Parte azul da informação do evento */
 .detalhes-evento-info {
-    background-color: #006F8E; /* Amarelo */
+    background-color: #006F8E; /* Azul */
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 100%;
+    box-sizing: border-box; /* Garante que o padding não exceda a largura do contêiner */
 }
 
 .detalhes-evento-info p {
@@ -68,13 +95,13 @@
 }
 
 .detalhes-evento-info a {
-    color: #ffffff; /* Azul */
+    color: #ffffff;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .detalhes-evento-info a:hover {
-    color: #d45d32; /* Vermelho */
+    color: #F1C232; /* Amarelo */
 }
 
 /* Responsividade */
