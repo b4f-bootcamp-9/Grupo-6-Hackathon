@@ -1,25 +1,63 @@
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
+
 import "../Styles/Eventos.css";
+import { Card } from "../components/card";
+
+
+function createQuery(queryObject = {}) {
+  let queryString = Object.keys(queryObject)
+    .filter(
+      (key) =>
+        queryObject[key] &&
+        !(Array.isArray(queryObject[key]) && !queryObject[key].length)
+    )
+    .map((key) => {
+      return Array.isArray(queryObject[key])
+        ? queryObject[key]
+            .map(
+              (item) => `${encodeURIComponent(key)}=${encodeURIComponent(item)}`
+            )
+            .join("&")
+        : `${encodeURIComponent(key)}=${encodeURIComponent(queryObject[key])}`;
+    })
+    .join("&");
+  return queryString ? `?${queryString}` : "";
+}
 
 export function Eventos() {
-  const handleSearch = async () => {
+  const [query, setQuery] = useState("");
+  const [fetchResult, setFetchResult] = useState([]);
+  useEffect(() => {
+    console.log(query);
+
+
     const requestOptions = {
       method: "GET",
       redirect: "follow",
     };
 
-    fetch(
-      "http://localhost:3001/api/eventos?c=oeiras&p=gratis&a=sim&t=tecnologia",
-      requestOptions
-    )
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.error(error));
-  };
-
+    const fetchData = async () => {
+      // http://localhost:3001/api/eventos?c=oeiras&p=gratis&a=sim&t=tecnologia
+      fetch(`http://localhost:3001/api/eventos${query}`, requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          setFetchResult(result);
+         // console.log(result);
+        })
+        .catch((error) => console.error(error));
+    };
+    fetchData();
+  }, [query]);
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const navigate = useNavigate();
+  const [concelho, setConcelho] = useState("");
+  const [preco, setPreco] = useState("");
+  const [acessivel, setAcessivel] = useState("");
+
+  const [filtro, setFiltro] = useState({});
+
 
   const categorias = [
     "Tecnologia",
@@ -30,70 +68,70 @@ export function Eventos() {
     "Teatro",
   ];
 
-  const eventos = [
-    {
-      id: 1,
-      titulo: "Sintra Con-Cê",
-      descricao: "O Sintra Con-Cê é um evento artístico imersivo que reúne música, cinema, artes plásticas e natureza no coração de Sintra.",
-      data: "25 de Abril de 2025",
-      imagem: "/Images/musica.png",
-      categoria: "Música",
-    },
-    {
-      id: 2,
-      titulo: "Festival do Leitao de Negrais",
-      descricao: "O Festival do Leitão de Negrais celebra a tradição gastronómica com leitão assado, música e animação em Negrais.",
-      data: "30 de Abril de 2025",
-      imagem: "/Images/gastronomia.png",
-      categoria: "Gastronomia",
-    },
-    {
-      id: 3,
-      titulo: "Visita o Palácio da Pena",
-      descricao: "O Palácio da Pena é um icónico palácio romântico em Sintra, com cores vibrantes e vistas deslumbrantes.",
-      data: "10 de Maio de 2025",
-      imagem: "/Images/arlivre.png",
-      categoria: "Ar Livre",
-    },
-    {
-      id: 4,
-      titulo: "Lisboa Games Week",
-      descricao: "A Lisboa Games Week é o maior evento de gaming em Portugal, reunindo videojogos, esports e tecnologia.",
-      data: "5 de Maio de 2025",
-      imagem: "/Images/tecnologia.png",
-      categoria: "Tecnologia",
-    },
-    {
-      id: 5,
-      titulo: "Passeios em Charrete Tradicional",
-      descricao: "Passeios de charrete tradicional em Sintra oferecem uma experiência nostálgica pelas ruas históricas, passando por palácios e paisagens encantadoras.",
-      data: "15 de Maio de 2025",
-      imagem: "/Images/tradicional.png",
-      categoria: "Tradicional",
-    },
-    {
-      id: 6,
-      titulo: "Casa de Teatro de Sintra",
-      descricao: "A Casa de Teatro de Sintra promove espetáculos e formações artísticas, valorizando o teatro local e a cultura portuguesa.",
-      data: "20 de Maio de 2025",
-      imagem: "/Images/teatro.png",
-      categoria: "Teatro",
-    },
-  ];
+
+
+  const [filtroCategoria, setFiltroCategoria] = useState([]);
+
+  console.log("Fetch Result");
+  console.log(fetchResult);
+
 
   const handleCategoryChange = (categoria) => {
-    setSelectedCategories((prevSelectedCategories) =>
-      prevSelectedCategories.includes(categoria)
-        ? prevSelectedCategories.filter((cat) => cat !== categoria)
-        : [...prevSelectedCategories, categoria]
+    setFiltroCategoria(
+      filtroCategoria.includes(categoria)
+        ? filtroCategoria.filter((cat) => cat !== categoria)
+        : [...filtroCategoria, categoria]
     );
   };
 
-  const filteredEventos = eventos.filter(
-    (evento) =>
-      selectedCategories.length === 0 ||
-      selectedCategories.includes(evento.categoria)
-  );
+  const handleConcelhoChange = (concelho) => {
+    setConcelho(concelho);
+  };
+
+  useEffect(() => {
+    if (filtroCategoria) {
+      setFiltro((prevFiltro) => {
+        return { ...prevFiltro, t: filtroCategoria };
+      });
+    }
+    if (concelho) {
+      console.log("concelho");
+      
+      console.log(concelho);
+      
+      setFiltro((prevFiltro) => {
+        return { ...prevFiltro, c: concelho };
+      });
+    }
+  }, [filtroCategoria, concelho]);
+
+  const handlePreco = () => {
+    setFiltro((prevFiltro) => {
+      if (prevFiltro.p === 1) {
+        return { ...prevFiltro, p: 0 };
+      } else {
+        return { ...prevFiltro, p: 1 };
+      }
+    });
+  };
+
+  const handleAcessibilidade = () => {
+    setFiltro((prevFiltro) => {
+      if (prevFiltro.a === 1) {
+        return { ...prevFiltro, a: 0 };
+      } else {
+        return { ...prevFiltro, a: 1 };
+      }
+    });
+  };
+
+  useEffect(() => {
+    setQuery(createQuery(filtro));
+  }, [filtro]);
+
+  useEffect(() => {
+    //console.log(filtroCategoria);
+  }, [filtroCategoria]);
 
   const handleDetalhesClick = (id) => {
     navigate(`/eventos/${id}`);
@@ -103,7 +141,13 @@ export function Eventos() {
     <div className="eventos-page">
       <div className="filtro">
         <h2>Filtro:</h2>
-        <select name="c" id="ListaConcelhos">
+        <select
+          name="c"
+          id="ListaConcelhos"
+          value={concelho}
+          onChange={(e) => handleConcelhoChange(e.target.value)}
+        >
+          <option value="Todos">Todos</option>
           <option value="Lisboa">Lisboa</option>
           <option value="Amadora">Amadora</option>
           <option value="Oeiras">Oeiras</option>
@@ -138,7 +182,7 @@ export function Eventos() {
           id="gratis"
           name="p"
           value="1"
-          onChange=""
+          onChange={(e) => handlePreco()}
         />
         <label htmlFor="gratis">Grátis</label>
         <input
@@ -146,27 +190,15 @@ export function Eventos() {
           id="acessivel"
           name="a"
           value="1"
-          onChange=""
+
+          onChange={(e) => handleAcessibilidade()}
         />
         <label htmlFor="acessivel">Acessível</label>
-        <button type="Button" onClick={() => handleSearch()}>A</button>
       </div>
       <div className="eventos-list">
-        {filteredEventos.map((evento) => (
-          <div className="evento-card" key={evento.id}>
-            <img
-              src={evento.imagem}
-              alt={evento.titulo}
-              className="evento-imagem"
-            />
-            <div className="evento-info">
-              <h2 className="evento-titulo">{evento.titulo}</h2>
-              <p className="evento-descricao">{evento.descricao}</p>
-              <p className="evento-data">{evento.data}</p>
-              <button className="evento-detalhes" onClick={() => handleDetalhesClick(evento.id)}>Detalhes</button>
-            </div>
-          </div>
-        ))}
+        {fetchResult && <Card data={fetchResult} />}
+       
+
       </div>
     </div>
   );
