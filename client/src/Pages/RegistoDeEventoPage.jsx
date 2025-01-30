@@ -1,61 +1,177 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../Styles/RegistoDeEventoPage.css";
 
-export function RegistoDeEvento() {
+export function RegistoDeEventoPage() {
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
   const [confirmationPopup, setConfirmationPopup] = useState(false);
+  const modalRef = useRef();
 
-  const eventos = [
-    {
-      id: 2,
-      titulo: "Feira Gastronômica",
-      descricao: "Delicie-se com a melhor comida da região.",
-      data: "30 de Abril de 2025",
-      imagem: "/Images/gastronomia.png",
-      categoria: "Gastronomia",
-      preco: "5€",
-      morada: "Praça da Gastronomia, 456, Lisboa",
-      acessibilidade: "Não",
-      website: "https://feiragastronomica.com/",
-      hora: "12:00",
-      email: "geral@gmail.com",
-      nomeProprio: "Joaquim",
-      contacto: "999999999"
-    },
-    {
-      id: 3,
-      titulo: "Evento de Tecnologia",
-      descricao: "Explore as últimas inovações tecnológicas.",
-      data: "12 de Maio de 2025",
-      imagem: "/Images/tecnologia.png",
-      categoria: "Tecnologia",
-      preco: "Gratuito",
-      morada: "Parque Tecnológico, 123, Lisboa",
-      acessibilidade: "Sim",
-      website: "https://eventodetecnologia.com/",
-      hora: "14:00",
-      email: "geral@gmail.com",
-      nomeProprio: "Joaquim",
-      contacto: "999999999"
-    }
-  ];
-
+  const [data, setData] = useState([]);
+  const [refreshData, setRefreshData] = useState(false);
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      const modal = document.querySelector(".modalContent");
-      if (modal && !modal.contains(event.target)) {
-        setSelectedEvent(null);
-        setConfirmationPopup(false);
-        setComment('');
-      }
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+    const fetchData = async () => {
+      fetch(`http://localhost:3001/api/eventos/gestao`, requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          setData(result);
+          //console.log(result);
+        })
+        .catch((error) => console.error(error));
     };
-  }, []);
+    fetchData();
+  }, [refreshData]);
+
+  const updateData = async (id,valor) => {
+    const requestOptions = {
+      method: "PATCH",
+      redirect: "follow",
+      body: JSON.stringify({estado:valor}),
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:3000",
+        "Access-Control-Allow-Credentials": true,
+      },
+    };
+    fetch(`http://localhost:3001/api/eventos/${id}`, requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        if(result.ok){
+          if(valor){
+            handleAccept()
+          }else{
+            handleReject()
+          }
+          
+        }
+        setRefreshData((prev) => !prev);
+        console.log(result);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const eventos =[...data]
+console.log(eventos);
+
+  // const eventos = [
+  //   {
+  //     id: 2,
+  //     titulo: "Feira Gastronômica",
+  //     descricao: "Delicie-se com a melhor comida da região.",
+  //     data: "30 de Abril de 2025",
+  //     imagem: "/Images/gastronomia.png",
+  //     categoria: "Gastronomia",
+  //     preco: "5€",
+  //     morada: "Praça da Gastronomia, 456, Lisboa",
+  //     acessibilidade: "Não",
+  //     website: "https://feiragastronomica.com/",
+  //     hora: "12:00",
+  //     email: "geral@gmail.com",
+  //     nomeProprio: "Joaquim",
+  //     contacto: "999999999",
+  //   },
+  //   {
+  //     id: 3,
+  //     titulo: "Evento de Tecnologia",
+  //     descricao: "Explore as últimas inovações tecnológicas.",
+  //     data: "12 de Maio de 2025",
+  //     imagem: "/Images/tecnologia.png",
+  //     categoria: "Tecnologia",
+  //     preco: "Gratuito",
+  //     morada: "Parque Tecnológico, 123, Lisboa",
+  //     acessibilidade: "Sim",
+  //     website: "https://eventodetecnologia.com/",
+  //     hora: "14:00",
+  //     email: "geral@gmail.com",
+  //     nomeProprio: "Joaquim",
+  //     contacto: "999999999",
+  //   },
+  //   {
+  //     id: 4,
+  //     titulo: "Evento de Tecnologia",
+  //     descricao: "Explore as últimas inovações tecnológicas.",
+  //     data: "12 de Maio de 2025",
+  //     imagem: "/Images/tecnologia.png",
+  //     categoria: "Tecnologia",
+  //     preco: "Gratuito",
+  //     morada: "Parque Tecnológico, 123, Lisboa",
+  //     acessibilidade: "Sim",
+  //     website: "https://eventodetecnologia.com/",
+  //     hora: "14:00",
+  //     email: "geral@gmail.com",
+  //     nomeProprio: "Joaquim",
+  //     contacto: "999999999",
+  //   },
+  //   {
+  //     id: 5,
+  //     titulo: "Evento de Tecnologia",
+  //     descricao: "Explore as últimas inovações tecnológicas.",
+  //     data: "12 de Maio de 2025",
+  //     imagem: "/Images/tecnologia.png",
+  //     categoria: "Tecnologia",
+  //     preco: "Gratuito",
+  //     morada: "Parque Tecnológico, 123, Lisboa",
+  //     acessibilidade: "Sim",
+  //     website: "https://eventodetecnologia.com/",
+  //     hora: "14:00",
+  //     email: "geral@gmail.com",
+  //     nomeProprio: "Joaquim",
+  //     contacto: "999999999",
+  //   },
+  //   {
+  //     id: 6,
+  //     titulo: "Evento de Tecnologia",
+  //     descricao: "Explore as últimas inovações tecnológicas.",
+  //     data: "12 de Maio de 2025",
+  //     imagem: "/Images/tecnologia.png",
+  //     categoria: "Tecnologia",
+  //     preco: "Gratuito",
+  //     morada: "Parque Tecnológico, 123, Lisboa",
+  //     acessibilidade: "Sim",
+  //     website: "https://eventodetecnologia.com/",
+  //     hora: "14:00",
+  //     email: "geral@gmail.com",
+  //     nomeProprio: "Joaquim",
+  //     contacto: "999999999",
+  //   },
+  //   {
+  //     id: 7,
+  //     titulo: "Evento de Tecnologia",
+  //     descricao: "Explore as últimas inovações tecnológicas.",
+  //     data: "12 de Maio de 2025",
+  //     imagem: "/Images/tecnologia.png",
+  //     categoria: "Tecnologia",
+  //     preco: "Gratuito",
+  //     morada: "Parque Tecnológico, 123, Lisboa",
+  //     acessibilidade: "Sim",
+  //     website: "https://eventodetecnologia.com/",
+  //     hora: "14:00",
+  //     email: "geral@gmail.com",
+  //     nomeProprio: "Joaquim",
+  //     contacto: "999999999",
+  //   },
+  //   {
+  //     id: 8,
+  //     titulo: "Evento de Tecnologia",
+  //     descricao: "Explore as últimas inovações tecnológicas.",
+  //     data: "12 de Maio de 2025",
+  //     imagem: "/Images/tecnologia.png",
+  //     categoria: "Tecnologia",
+  //     preco: "Gratuito",
+  //     morada: "Parque Tecnológico, 123, Lisboa",
+  //     acessibilidade: "Sim",
+  //     website: "https://eventodetecnologia.com/",
+  //     hora: "14:00",
+  //     email: "geral@gmail.com",
+  //     nomeProprio: "Joaquim",
+  //     contacto: "999999999",
+  //   },
+  // ];
 
   const handleEventClick = (event) => {
     setSelectedEvent(event);
@@ -73,48 +189,120 @@ export function RegistoDeEvento() {
 
   const handleCloseConfirmation = () => {
     setConfirmationPopup(false);
-    setComment('');
+    setComment("");
   };
+
+  const handleClosePopup = (e) => {
+    if (modalRef.current && !modalRef.current.contains(e.target)) {
+      setSelectedEvent(null);
+      setConfirmationPopup(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClosePopup);
+    return () => {
+      document.removeEventListener("mousedown", handleClosePopup);
+    };
+  }, []);
 
   return (
     <div className="container">
       <h1 className="titulo">Confirmação dos Eventos Registrados</h1>
-      {eventos.map((evento) => (
-        <div key={evento.id} className="card" onClick={() => handleEventClick(evento)}>
-          <div className="eventInfo">
-            <span className="eventNome">{evento.titulo}</span>
-            <span className="eventDescricao">{evento.descricao}</span>
-            <span className="eventContacto"><strong>Contacto:</strong> {evento.contacto}</span>
-            <span className="eventEmail"><strong>Email:</strong> {evento.email}</span>
-            <span className="eventNomeProprio"><strong>Nome:</strong> {evento.nomeProprio}</span>
-            <span className="eventHora"><strong>Hora:</strong> {evento.hora}</span>
+
+      <div className="cards-grid">
+        {eventos.map((evento) => (
+          <div
+            key={evento._id}
+            className="card"
+            onClick={() => handleEventClick(evento)}
+          >
+            <img
+              src={evento.imagem}
+              alt={evento.nomeEvento}
+              className="card-image"
+            />
+            <div className="card-content">
+              <div className="card-header">
+                <h3 className="eventNome">{evento.nomeEvento}</h3>
+                <span className="eventConselho">{evento.tipo}</span>
+              </div>
+              <p className="eventDescricao">{evento.descricao}</p>
+              <div className="card-meta">
+                <span className="eventData">{evento.data}</span>
+
+                <span className="eventPreco">{evento.preco ? "Pago":"Grátis"}</span>
+              </div>
+              <div className="contact-info">
+                <span className="eventContacto">{evento.contacto}</span>
+                <span className="eventEmail">{evento.email}</span>
+              </div>
+            </div>
           </div>
-          <div className="eventDetails">
-            <span className="eventConselho">{evento.categoria}</span>
-            <span className="eventData">{evento.data}</span>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
 
       {selectedEvent && (
         <div className="modal">
-          <div className="modalContent">
+          <div className="modalContent" ref={modalRef}>
             <h2>{selectedEvent.titulo}</h2>
-            <img src={selectedEvent.imagem} alt={selectedEvent.titulo} className="eventImage" />
+            <img
+              src={selectedEvent.imagem}
+              alt={selectedEvent.nomeEvento}
+              className="eventImage"
+            />
             <p>{selectedEvent.descricao}</p>
-            <p><strong>Data:</strong> {selectedEvent.data}</p>
-            <p><strong>Local:</strong> {selectedEvent.morada}</p>
-            <p><strong>Preço:</strong> {selectedEvent.preco}</p>
-            <p><strong>Acessibilidade:</strong> {selectedEvent.acessibilidade}</p>
-            <p><strong>Contacto:</strong> {selectedEvent.contacto}</p>
-            <p><strong>Email:</strong> {selectedEvent.email}</p>
-            <p><strong>Nome Proprio:</strong> {selectedEvent.nomeProprio}</p>
-            <p><strong>Website:</strong> <a href={selectedEvent.website} target="_blank" rel="noopener noreferrer">{selectedEvent.website}</a></p>
-            <p><strong>Hora:</strong> {selectedEvent.hora}</p>
+            <div className="details-grid">
+              <div className="detail-item">
+                <span className="detail-label">Data:</span>
+                <span className="detail-value">{selectedEvent.data}</span>
+              </div>
+              <div className="detail-item">
+                <span className="detail-label">Local:</span>
+                <span className="detail-value">{selectedEvent.morada}</span>
+              </div>
+              <div className="detail-item">
+                <span className="detail-label">Entrada:</span>
+                <span className="detail-value">{selectedEvent.preco ? "Pago":"Grátis"}</span>
+              </div>
+              <div className="detail-item">
+                <span className="detail-label">Acessibilidade:</span>
+                <span className="detail-value">
+                  {selectedEvent.acessivel?"Sim":"Não"}
+                </span>
+              </div>
+              <div className="detail-item">
+                <span className="detail-label">Contacto:</span>
+                <span className="detail-value">{selectedEvent.contacto}</span>
+              </div>
+              <div className="detail-item">
+                <span className="detail-label">Email:</span>
+                <span className="detail-value">{selectedEvent.email}</span>
+              </div>
+              <div className="detail-item">
+                <span className="detail-label">Website:</span>
+                <a
+                  href={selectedEvent.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="detail-link"
+                >
+                  {selectedEvent.website}
+                </a>
+              </div>
+              {/* <div className="detail-item">
+                <span className="detail-label">Hora:</span>
+                <span className="detail-value">{selectedEvent.hora}</span>
+              </div> */}
+            </div>
 
             <div className="buttonContainer">
-              <button className="acceptButton" onClick={handleAccept}>Aceitar</button>
-              <button className="rejectButton" onClick={handleReject}>Recusar</button>
+              <button className="acceptButton" onClick={()=>updateData(selectedEvent._id,true)}>
+                Aceitar
+              </button>
+              <button className="rejectButton" onClick={()=>updateData(selectedEvent._id,false)}>
+                Recusar
+              </button>
             </div>
           </div>
         </div>
@@ -122,9 +310,18 @@ export function RegistoDeEvento() {
 
       {confirmationPopup && (
         <div className="modal">
-          <div className="modalContent">
-            <h2>Evento {confirmationPopup.action === "accepted" ? "Aceito" : "Recusado"}</h2>
-            <button onClick={handleCloseConfirmation} className="closeButton">Fechar</button>
+          <div className="modalContent" ref={modalRef}>
+            <h2>
+              Evento{" "}
+              {confirmationPopup.action === "accepted" ? "Aceite" : "Recusado"}
+            </h2>
+            <p className="confirmation-message">
+              {confirmationPopup.comment &&
+                `Comentário: ${confirmationPopup.comment}`}
+            </p>
+            <button onClick={handleCloseConfirmation} className="closeButton">
+              Fechar
+            </button>
           </div>
         </div>
       )}
