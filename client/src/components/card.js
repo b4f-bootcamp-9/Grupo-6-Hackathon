@@ -26,7 +26,7 @@ export function Card(data) {
           </div>
         ))
       ) : (
-        <div>A Carregar</div>
+        <div>Não existem resultados</div>
       )}
     </>
   );

@@ -59,7 +59,7 @@
     flex-wrap: wrap;
     gap: 20px; /* Espaço entre os cards */
     width: 80%;
-    justify-content: center; /* Centraliza os eventos */
+    /* justify-content: center; Centraliza os eventos */
 }
 
 .evento-card {
