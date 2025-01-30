@@ -4,18 +4,18 @@ import "../Styles/InscricaoEventos.css";
 export function InscricaoEvento() {
   const [formData, setFormData] = useState({
     imagem: "",
-    nomeEvento: "",
-    descricao: "",
-    data: "",
-    tipo:"",
-    acessivel:false,
+    nomeEvento: "Apresentação Bytes4Future",
+    descricao: "Apresentação das hackathons dos alunos do Bytes4Future",
+    data: "30/01/2025",
+    tipo:"Tecnologia",
+    acessivel:true,
     preco: false,
-    concelho: "",
-    morada:"",
-    website: "",
-    nomeResponsavel: "",
-    email: "",
-    contacto: "",
+    concelho: "Sintra",
+    morada:"Rua Padre Alberto Neto, 2725-531 Algueirão-Mem Martins",
+    website: "https://bytes4future.pt/",
+    nomeResponsavel: "Fundação Aga Khan",
+    email: "afgportugal@akdn.org",
+    contacto: "217229000",
   });
 const [isSubmitted, setIsSubmitted] = useState(false);
   const requestOptions = {
@@ -229,7 +229,7 @@ const [isSubmitted, setIsSubmitted] = useState(false);
           type="text"
           id="nomeResponsavel"
           name="nomeResponsavel"
-          value={formData.nomePessoa}
+          value={formData.nomeResponsavel}
           onChange={handleChange}
           required
         />
