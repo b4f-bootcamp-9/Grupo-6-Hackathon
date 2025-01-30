@@ -43,7 +43,7 @@
 
 /* Estilos do Card do Evento */
 .detalhes-evento-card {
-    background-color: white;
+    background-color: #FFFFFF;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 100%;
@@ -70,19 +70,19 @@
 .detalhes-evento-imagem {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Corta a imagem para caber no contêiner */
+    object-fit: cover;
 }
 
 .detalhes-evento-descricao {
     font-size: 1.2rem;
-    color: #333;
+    color: #000000;
     margin-bottom: 20px;
     text-align: center;
 }
 
 /* Parte azul da informação do evento */
 .detalhes-evento-info {
-    background-color: #006F8E; /* Azul */
+    background-color: #E1E1E1; /* Azul */
     padding: 20px;
     width: 100%;
     box-sizing: border-box; /* Garante que o padding não exceda a largura do contêiner */
@@ -90,18 +90,18 @@
 
 .detalhes-evento-info p {
     font-size: 1rem;
-    color: #ffffff;
+    color: #333;
     margin-bottom: 10px;
 }
 
 .detalhes-evento-info a {
-    color: #ffffff;
+    color: #333;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .detalhes-evento-info a:hover {
-    color: #F1C232; /* Amarelo */
+    color: #006F8E; /* Azul */
 }
 
 /* Responsividade */

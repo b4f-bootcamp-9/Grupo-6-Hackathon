@@ -42,10 +42,11 @@ export function Eventos() {
     const fetchData = async () => {
      
       fetch(`http://localhost:3001/api/eventos${query}`, requestOptions)
+
         .then((response) => response.json())
         .then((result) => {
           setFetchResult(result);
-         // console.log(result);
+          console.log(result);
         })
         .catch((error) => console.error(error));
     };

@@ -27,10 +27,11 @@ export function Login() {
       };
 
     return (
-        <div className="login-page">
+        <div className="login-page">       
             <div className="login-container">
                 <div className="login-logo">
-                    <img src="/Images/logo.png" alt="Logo do Site" />
+                    {/* <img src="/Images/logo.png" alt="Logo do Site" /> */}
+                    <p>Login Gestão</p>
                 </div>
                 <form className="login-form" onSubmit={handleSubmit}>
                     <label htmlFor="email">Email:</label>

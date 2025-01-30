@@ -34,6 +34,7 @@ export function Navbar() {
           className="logo"
           onClick={handleHomeClick}
         />
+        <p>Distrito Vivo</p>
       </div>
       <ul className="navbar-links">
         <li>
