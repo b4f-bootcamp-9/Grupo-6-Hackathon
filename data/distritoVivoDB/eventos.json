@@ -1,0 +1,159 @@
+[{
+  "_id": {
+    "$oid": "6799444ef7b1526c7aa985c9"
+  },
+  "nomeEvento": "Sintra Con-Cê",
+  "descricao": "O Sintra Con-Cê é um evento artístico imersivo que reúne música, cinema, artes plásticas e natureza no coração de Sintra.",
+  "data": "25 de Abril de 2025",
+  "concelho": "Sintra",
+  "morada": "R. Gago Coutinho 8, 2710-566 Sintra",
+  "tipo": "Música",
+  "contacto": "a",
+  "email": "a",
+  "nomeResponsavel": "a",
+  "estado": "confirmado",
+  "website": "https://a3associacao.wixsite.com/cultura/sintra-con-ce",
+  "imagem": "musica.png"
+},
+{
+  "_id": {
+    "$oid": "6799588d1f5e8b3af445e904"
+  },
+  "nomeEvento": "Lisboa Games Week",
+  "descricao": "A Lisboa Games Week é o maior evento de gaming em Portugal, reunindo videojogos, esports e tecnologia.",
+  "data": "5 de Maio de 2025",
+  "concelho": "Lisboa",
+  "morada": "R. do Bojador, 1998-010 Lisboa",
+  "tipo": "Tecnologia",
+  "contacto": "a",
+  "email": "a",
+  "nomeResponsavel": "bernardo",
+  "estado": "confirmado",
+  "website": "https://www.lisboagamesweek.pt",
+  "imagem": "tecnologia.png"
+},
+{
+  "_id": {
+    "$oid": "67995bc8641118ff434c4b2c"
+  },
+  "nomeEvento": "Festival de Leitão de Negrais",
+  "descricao": "O Festival do Leitão de Negrais celebra a tradição gastronómica com leitão assado, música e animação em Negrais.",
+  "data": "30 de Abril de 2025",
+  "concelho": "Sintra",
+  "morada": "Largo do Rossio, Negrais, 2715-314 Almargem do Bpo.",
+  "tipo": "Gastronomia",
+  "contacto": "a",
+  "email": "a",
+  "nomeResponsavel": "bernardo",
+  "estado": "confirmado",
+  "imagem": "gastronomia.png",
+  "website": "https://festanegrais.pt"
+},
+{
+  "_id": {
+    "$oid": "679a56f15aa67e4121fdddcf"
+  },
+  "nomeEvento": "Visita ao Palácio de Pena",
+  "descricao": "O Palácio da Pena é um icónico palácio romântico em Sintra, com cores vibrantes e vistas deslumbrantes.",
+  "data": "10 de Maio de 2025",
+  "concelho": "Sintra",
+  "morada": "Estrada da Pena, 2710-609 Sintra",
+  "tipo": "Ar Livre ",
+  "contacto": "a",
+  "email": "a",
+  "nomeResponsavel": "bernardo",
+  "estado": "confirmado",
+  "imagem": "arlivre.png",
+  "website": "https://www.parquesdesintra.pt/pt/parques-monumentos/parque-e-palacio-nacional-da-pena/"
+},
+{
+  "_id": {
+    "$oid": "679a57a95aa67e4121fdddd0"
+  },
+  "nomeEvento": "Passeios em Charrete Tradicional",
+  "descricao": "Passeios de charrete tradicional em Sintra oferecem uma experiência nostálgica pelas ruas históricas, passando por palácios e paisagens encantadoras.",
+  "data": "15 de Maio de 2025",
+  "concelho": "Sintra",
+  "morada": "Rua do Moinho, n.º 13-A, Aruil 2715-421, Almargem do Bispo",
+  "tipo": "Tradicional ",
+  "contacto": "a",
+  "email": "a",
+  "nomeResponsavel": "bernardo",
+  "estado": "confirmado",
+  "imagem": "tradicional.png",
+  "website": "https://www.qtour.pt/index.php/pt/"
+},
+{
+  "_id": {
+    "$oid": "679a58b95aa67e4121fdddd1"
+  },
+  "nomeEvento": "Casa de Teatro de Sintra",
+  "descricao": "A Casa de Teatro de Sintra promove espetáculos e formações artísticas, valorizando o teatro local e a cultura portuguesa.",
+  "data": "20 de Maio de 2025",
+  "concelho": "Sintra",
+  "morada": "R. Veiga da Cunha 20, 2710-627 Sintra",
+  "tipo": "Teatro ",
+  "contacto": "a",
+  "email": "a",
+  "nomeResponsavel": "bernardo",
+  "estado": "confirmado",
+  "imagem": "teatro.png",
+  "website": "https://chaodeoliva.com"
+},
+{
+  "_id": {
+    "$oid": "679b5a8609fcd6b9303224b2"
+  },
+  "imagem": "feirasardinha.jpg",
+  "nomeEvento": "Feira da Sardinha",
+  "descricao": "Evento com comida bebida e muita animação para todas as idades venha visitar o nosso quartel",
+  "data": "2025-08-01",
+  "tipo": "Gastronomia",
+  "acessivel": true,
+  "preco": true,
+  "concelho": "Sintra",
+  "morada": "R. Dom Pedro IV 1b, 2745-201 Queluz",
+  "website": "https://bvqueluz.pt",
+  "nomeResponsavel": "Bernardo Oliveira",
+  "email": "bernas2706@gmail.com",
+  "contacto": "939013817",
+  "estado": "pendente"
+},
+{
+  "_id": {
+    "$oid": "679b5d6509fcd6b9303224b3"
+  },
+  "imagem": "",
+  "nomeEvento": "Festival de Música de Sintra",
+  "descricao": "Iniciado em 1957, este festival destaca-se pela sua programação de música clássica, trazendo artistas de renome internacional.",
+  "data": "2025-06-20",
+  "tipo": "Musica",
+  "acessivel": true,
+  "preco": true,
+  "concelho": "Sintra",
+  "morada": "Palácio Nacional de Sintra, Sala dos Cisnes",
+  "website": "https://festivaldesintra.pt",
+  "nomeResponsavel": "Câmara municipal de Sintra",
+  "email": "geral@camerasintra.pt",
+  "contacto": "999999999",
+  "estado": "pendente"
+},
+{
+  "_id": {
+    "$oid": "679b5e8009fcd6b9303224b4"
+  },
+  "imagem": "",
+  "nomeEvento": "Periferias",
+  "descricao": "O PERIFERIAS – Festival Internacional de Artes Performativas apresenta uma programação multidisciplinar, tendo como eixo central o teatro, mas também é constituído por dança, performance, marionetas, música, animação de rua, espetáculos de rua, feira do livro, exposições, conversas periféricas, fringe (um espaço para short stories) e oficinas.",
+  "data": "2025-03-20",
+  "tipo": "Musica",
+  "acessivel": true,
+  "preco": true,
+  "concelho": "Oeiras",
+  "morada": "rua do Afonso, Oeiras",
+  "website": "",
+  "nomeResponsavel": "afonso",
+  "email": "afonso@gmail.com",
+  "contacto": "969696969",
+  "estado": "pendente"
+}]

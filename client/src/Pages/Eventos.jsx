@@ -40,7 +40,7 @@ export function Eventos() {
     };
 
     const fetchData = async () => {
-     
+      // http://localhost:3001/api/eventos?c=oeiras&p=gratis&a=sim&t=tecnologia
       fetch(`http://localhost:3001/api/eventos${query}`, requestOptions)
 
         .then((response) => response.json())
@@ -148,7 +148,7 @@ export function Eventos() {
           value={concelho}
           onChange={(e) => handleConcelhoChange(e.target.value)}
         >
-          <option value="Todos">Todos</option>
+          <option value="Todos">Concelhos</option>
           <option value="Lisboa">Lisboa</option>
           <option value="Amadora">Amadora</option>
           <option value="Oeiras">Oeiras</option>
