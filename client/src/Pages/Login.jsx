@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "../Styles/Login.css";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
+      const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        email: "",
-        password: "",
+        email: "gestao@distritovivo.pt",
+        password: "passworddeteste",
     });
 
     const handleChange = (e) => {
@@ -19,6 +21,10 @@ export function Login() {
         e.preventDefault();
         console.log("Dados de login:", formData);
     };
+
+    const handleLoginClick = () => {
+        navigate("/verificar");
+      };
 
     return (
         <div className="login-page">
@@ -47,7 +53,7 @@ export function Login() {
                         required
                     />
 
-                    <button type="submit">Login</button>
+                    <button type="button"onClick={handleLoginClick}>Login</button>
                 </form>
             </div>
         </div>

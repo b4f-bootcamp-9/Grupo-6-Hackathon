@@ -40,7 +40,7 @@ export function Eventos() {
     };
 
     const fetchData = async () => {
-      // http://localhost:3001/api/eventos?c=oeiras&p=gratis&a=sim&t=tecnologia
+     
       fetch(`http://localhost:3001/api/eventos${query}`, requestOptions)
         .then((response) => response.json())
         .then((result) => {

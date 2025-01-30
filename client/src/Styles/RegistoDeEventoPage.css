@@ -3,7 +3,7 @@
 .container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 5rem 2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -132,10 +132,11 @@
 
 .modal {
   position: fixed;
-  top: 0px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+ 
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
