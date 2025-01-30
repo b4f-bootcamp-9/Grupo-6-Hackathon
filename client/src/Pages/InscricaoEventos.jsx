@@ -17,7 +17,7 @@ export function InscricaoEvento() {
     email: "",
     contacto: "",
   });
-
+const [isSubmitted, setIsSubmitted] = useState(false);
   const requestOptions = {
     method: "POST",
     redirect: "follow",
@@ -30,15 +30,18 @@ export function InscricaoEvento() {
   };
 
   const fetchData = () => {
-    fetch(`http://localhost:3001/api/eventos`, requestOptions)
+    fetch(`http://localhost:3031/api/eventos`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
+        setIsSubmitted(true)
+       
+
       })
       .catch((error) => console.error(error));
   };
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -81,6 +84,7 @@ export function InscricaoEvento() {
 
   const closePopup = () => {
     setIsSubmitted(false);
+    window.location.href = "/";
   };
 
   return (
@@ -258,7 +262,7 @@ export function InscricaoEvento() {
           <div className="popup-content">
             <h3>Obrigado!</h3>
             <p>A sua inscrição foi enviada com sucesso.</p>
-            <p>Iremos analisar e assim que possivél, entraremos em contato.</p>
+            <p>Iremos analisar e assim que possível, entraremos em contato.</p>
             <button onClick={closePopup}>Fechar</button>
           </div>
         </div>

@@ -121,4 +121,40 @@
     .detalhes-evento-info {
         padding: 15px;
     }
+
+     
+
+    .buttonsite{
+
+        align-items: flex-end; /* Alinhar à direita */
+        width: 60px;
+        background-color: #F1c232; /* Cor amarela */
+        color: #ffffff; /* Cor do texto */
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+}
+.evento-detalhes {
+    align-items: flex-end; /* Alinhar à direita */
+    width: 60px;
+    background-color: #F1c232; /* Cor amarela */
+    color: #ffffff; /* Cor do texto */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.evento-detalhes-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.evento-detalhes:hover {
+    background-color: #006F8E; /* Cor vermelha ao passar o mouse */
+    color: white; /* Cor do texto ao passar o mouse */
 }

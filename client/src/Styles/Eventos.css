@@ -148,7 +148,7 @@
 }
 
 .evento-detalhes:hover {
-    background-color: #006F8E; /* Cor vermelha ao passar o mouse */
+    background-color: #006F8E; /* Cor azul ao passar o mouse */
     color: white; /* Cor do texto ao passar o mouse */
 }
 

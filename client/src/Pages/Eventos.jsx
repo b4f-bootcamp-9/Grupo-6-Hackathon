@@ -41,7 +41,7 @@ export function Eventos() {
 
     const fetchData = async () => {
      
-      fetch(`http://localhost:3001/api/eventos${query}`, requestOptions)
+      fetch(`http://localhost:3031/api/eventos${query}`, requestOptions)
 
         .then((response) => response.json())
         .then((result) => {
@@ -148,7 +148,7 @@ export function Eventos() {
           value={concelho}
           onChange={(e) => handleConcelhoChange(e.target.value)}
         >
-          <option value="Todos">Todos</option>
+          <option value="Todos">Todos os concelhos</option>
           <option value="Lisboa">Lisboa</option>
           <option value="Amadora">Amadora</option>
           <option value="Oeiras">Oeiras</option>
@@ -166,6 +166,7 @@ export function Eventos() {
           <option value="Lourinhã">Lourinhã</option>
           <option value="Bombarral">Bombarral</option>
         </select>
+        <p>Categorias</p>
         {categorias.map((categoria, index) => (
           <div key={index} className="checkbox-container">
             <input
@@ -178,6 +179,7 @@ export function Eventos() {
             <label htmlFor={categoria}>{categoria}</label>
           </div>
         ))}
+        <p>Entrada</p>
         <input
           type="checkbox"
           id="gratis"
@@ -186,6 +188,7 @@ export function Eventos() {
           onChange={(e) => handlePreco()}
         />
         <label htmlFor="gratis">Grátis</label>
+        <br/>
         <input
           type="checkbox"
           id="acessivel"

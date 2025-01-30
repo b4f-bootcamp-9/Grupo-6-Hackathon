@@ -16,7 +16,7 @@ export function RegistoDeEventoPage() {
     };
 
     const fetchData = async () => {
-      fetch(`http://localhost:3001/api/eventos/gestao`, requestOptions)
+      fetch(`http://localhost:3031/api/eventos/gestao`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
           setData(result);
@@ -38,7 +38,7 @@ export function RegistoDeEventoPage() {
         "Access-Control-Allow-Credentials": true,
       },
     };
-    fetch(`http://localhost:3001/api/eventos/${id}`, requestOptions)
+    fetch(`http://localhost:3031/api/eventos/${id}`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         if(result.ok){

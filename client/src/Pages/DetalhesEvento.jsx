@@ -14,7 +14,7 @@ export function DetalhesEvento() {
     };
 
     const fetchData = async () => {
-      fetch(`http://localhost:3001/api/eventos/${id}`, requestOptions)
+      fetch(`http://localhost:3031/api/eventos/${id}`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
           setData(result);
@@ -182,7 +182,7 @@ export function DetalhesEvento() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <button>Visitar Website</button>
+                    <button className="buttonsite">Visitar Website</button>
                   </a>
                 </p>
               )}

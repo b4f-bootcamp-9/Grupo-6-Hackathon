@@ -22,8 +22,8 @@ export function Contactos() {
                 <div className="contactos-info">
                     <h2>Informações de Contacto</h2>
                     <p><strong>Email:</strong> geral@distritovivo.pt</p>
-                    <p><strong>Telefone:</strong> (+351) 123 456 789</p>
-                    <p><strong>Morada:</strong> Rua Exemplo, 123, 1000-000 Lisboa, Portugal</p>
+                    <p><strong>Telefone:</strong> (+351) 932 212 341</p>
+                    <p><strong>Morada:</strong> Rua Padre Alberto Neto, 2725-531 Algueirão-Mem Martins</p>
                     <div className="social-icons">
                         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
                         <a href="https://bsky.app" target="_blank" rel="noopener noreferrer">BlueSky</a>

@@ -5,10 +5,15 @@
     align-items: center;
     height: 100vh;
     background-color: #e1e1e1; /* Cor de fundo cinzenta clara */   
+    background-image: url(../../public/Images/Tomorrowland.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position-y: bottom;
+
 }
 
 .login-container {   
-    background-color: #838383; /* Fundo do contêiner de login */
+    background-color: #FFF; /* Fundo do contêiner de login */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px #006f8e; /* Luz azul ao redor */
@@ -21,7 +26,7 @@
     display: flex;
     font-size: large;
     flex-direction: column;
-    color: white;
+    color: rgb(0, 0, 0);
     align-items: center;
     margin-bottom: 15px;
 }
