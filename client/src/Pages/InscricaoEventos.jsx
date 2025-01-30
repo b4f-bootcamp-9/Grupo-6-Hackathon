@@ -4,20 +4,20 @@ import "../Styles/InscricaoEventos.css";
 export function InscricaoEvento() {
   const [formData, setFormData] = useState({
     imagem: "",
-    nomeEvento: "",
-    descricao: "",
-    data: "",
-    tipo:"",
-    acessivel:false,
+    nomeEvento: "Apresentação Bytes4Future",
+    descricao: "Apresentação das hackathons dos alunos do Bytes4Future",
+    data: "30/01/2025",
+    tipo:"Tecnologia",
+    acessivel:true,
     preco: false,
-    concelho: "",
-    morada:"",
-    website: "",
-    nomeResponsavel: "",
-    email: "",
-    contacto: "",
+    concelho: "Sintra",
+    morada:"Rua Padre Alberto Neto, 2725-531 Algueirão-Mem Martins",
+    website: "https://bytes4future.pt/",
+    nomeResponsavel: "Fundação Aga Khan",
+    email: "afgportugal@akdn.org",
+    contacto: "217229000",
   });
-
+const [isSubmitted, setIsSubmitted] = useState(false);
   const requestOptions = {
     method: "POST",
     redirect: "follow",
@@ -30,15 +30,18 @@ export function InscricaoEvento() {
   };
 
   const fetchData = () => {
-    fetch(`http://localhost:3001/api/eventos`, requestOptions)
+    fetch(`http://localhost:3031/api/eventos`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
+        setIsSubmitted(true)
+       
+
       })
       .catch((error) => console.error(error));
   };
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -81,6 +84,7 @@ export function InscricaoEvento() {
 
   const closePopup = () => {
     setIsSubmitted(false);
+    window.location.href = "/";
   };
 
   return (
@@ -225,7 +229,7 @@ export function InscricaoEvento() {
           type="text"
           id="nomeResponsavel"
           name="nomeResponsavel"
-          value={formData.nomePessoa}
+          value={formData.nomeResponsavel}
           onChange={handleChange}
           required
         />
@@ -258,7 +262,7 @@ export function InscricaoEvento() {
           <div className="popup-content">
             <h3>Obrigado!</h3>
             <p>A sua inscrição foi enviada com sucesso.</p>
-            <p>Iremos analisar e assim que possivél, entraremos em contato.</p>
+            <p>Iremos analisar e assim que possível, entraremos em contato.</p>
             <button onClick={closePopup}>Fechar</button>
           </div>
         </div>

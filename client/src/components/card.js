@@ -20,7 +20,7 @@ export function Card(data) {
                 <p className="evento-concelho">{evento.concelho}</p>
               </div>
               <div className="evento-detalhes-wrapper">
-                <div className="evento-detalhes" onClick={() => window.location.href = `/eventos/${evento.id}`}>Detalhes</div>
+                <div className="evento-detalhes" onClick={() => window.location.href = `/eventos/${evento._id}`}>Detalhes</div>
               </div>
             </div>
           </div>
